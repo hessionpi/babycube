@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.rjzd.baby.ui.activity.BindingMobileActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:src="@drawable/nav_icon_back_black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="绑定手机号"
+            android:textColor="@color/cl_333333"
+            android:textSize="@dimen/font_size_17" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:gravity="center"
+        android:text="绑定手机账号更安全"
+        android:textColor="@color/cl_primary"
+        android:textSize="@dimen/font_size_12"
+        android:background="@color/cl_bfe6ec"/>
+    <ImageView
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:src="@drawable/ic_default_baby_boy"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="宝贝妈妈"
+        android:textSize="@dimen/font_size_15"
+        android:textColor="@color/cl_333333"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+
+        android:layout_marginTop="25dp"
+
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/phone"
+            android:textColor="@color/cl_666666"
+            android:textSize="@dimen/font_size_15" />
+
+
+        <com.rjzd.baby.ui.widget.edit.ClearEditText
+            android:id="@+id/cet_phone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:hint="@string/hint_phone"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColorHint="@color/cl_cccccc"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font_size_15" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cl_e8e8e8"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:text="@string/code"
+            android:textColor="@color/cl_666666"
+            android:textSize="@dimen/font_size_15" />
+
+
+        <EditText
+            android:id="@+id/et_code"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColorHint="@color/cl_cccccc"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font_size_15" />
+
+        <TextView
+            android:id="@+id/gain_code"
+            android:layout_width="90dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/shape_login_bg"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="@string/gain_code"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_11" />
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/cl_e8e8e8"/>
+
+
+    <TextView
+        android:id="@+id/tv_login"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/shape_login_bg"
+        android:gravity="center"
+        android:text="完成绑定"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_17" />
+</LinearLayout>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pregnancy_week">
+        <item>全</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+        <item>19</item>
+        <item>20</item>
+        <item>21</item>
+        <item>22</item>
+        <item>23</item>
+        <item>24</item>
+        <item>25</item>
+        <item>26</item>
+        <item>27</item>
+        <item>28</item>
+        <item>29</item>
+        <item>30</item>
+        <item>31</item>
+        <item>32</item>
+        <item>33</item>
+        <item>34</item>
+        <item>35</item>
+        <item>36</item>
+        <item>37</item>
+        <item>38</item>
+        <item>39</item>
+        <item>40</item>
+    </string-array>
+
+    <string-array name="pregnancy_week_change">
+
+        <item>孕4周以下</item>
+        <item>孕5周</item>
+        <item>孕6周</item>
+        <item>孕7周</item>
+        <item>孕8周</item>
+        <item>孕9周</item>
+        <item>孕10周</item>
+        <item>孕11周</item>
+        <item>孕12周</item>
+        <item>孕13周</item>
+        <item>孕14周</item>
+        <item>孕15周</item>
+        <item>孕16周</item>
+        <item>孕17周</item>
+        <item>孕18周</item>
+        <item>孕19周</item>
+        <item>孕20周</item>
+        <item>孕21周</item>
+        <item>孕22周</item>
+        <item>孕23周</item>
+        <item>孕24周</item>
+        <item>孕25周</item>
+        <item>孕26周</item>
+        <item>孕27周</item>
+        <item>孕28周</item>
+        <item>孕29周</item>
+        <item>孕30周</item>
+        <item>孕31周</item>
+        <item>孕32周</item>
+        <item>孕33周</item>
+        <item>孕34周</item>
+        <item>孕35周</item>
+        <item>孕36周</item>
+        <item>孕37周</item>
+        <item>孕38周</item>
+        <item>孕39周</item>
+        <item>孕40周</item>
+        <item>孕40周以上</item>
+    </string-array>
+</resources>

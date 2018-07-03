@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+    <EditText
+        android:id="@+id/etContent"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:textSize="@dimen/font_size_13"
+        tools:text="今天代码都不贴了，源码的注释写的很详细，相信阅读起来应该没有什么困难。对于喜欢研究Android特效果然"
+        />
+
+    <TextView
+        android:id="@+id/tvNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_gravity="end"
+        android:textSize="@dimen/font_size_13"
+        tools:text="7/50"
+        />
+</LinearLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_bg"
+    android:orientation="vertical"
+    tools:context="com.rjzd.baby.ui.activity.RegisterMobileActivity">
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="25dp"
+        android:src="@drawable/icon_back" />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_below="@id/iv_back"
+        android:text="@string/my_phone"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_30" />
+
+    <LinearLayout
+        android:id="@+id/ll_number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_below="@id/tv_number"
+        android:layout_marginTop="40dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_register_number"
+            android:text="+86"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_17" />
+
+        <com.rjzd.baby.ui.widget.edit.ClearEditText
+            android:id="@+id/cet_phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:background="@null"
+            android:inputType="number"
+            android:maxLength="11"
+            android:textColorHint="@color/cl_cccccc"
+            android:textColor="@color/white"
+            android:textCursorDrawable="@null"
+            android:textSize="@dimen/font_size_23" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_below="@id/ll_number"
+        android:background="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginStart="40dp"
+        android:layout_gravity="bottom">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/read"
+            android:textColor="@color/cl_777777"
+            android:textSize="@dimen/font_size_14" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="@string/pact"
+            android:textColor="@color/cl_primary"
+            android:textSize="@dimen/font_size_14" />
+
+        <TextView
+            android:id="@+id/tv_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:background="@drawable/shape_done_bg"
+            android:text="@string/next"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_17" />
+    </LinearLayout>
+</RelativeLayout>

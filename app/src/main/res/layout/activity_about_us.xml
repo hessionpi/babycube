@@ -1,0 +1,72 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <com.rjzd.baby.ui.widget.ToolsbarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actionRightText="@string/save"
+        app:background="@color/white"
+        app:actionLeftBackground="@drawable/ic_toolbar_back_black"
+        app:titleText="@string/nav_menu_about_us"
+        app:titleColor="@color/cl_333333"
+        >
+    </com.rjzd.baby.ui.widget.ToolsbarView>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="55dp"
+        android:src="@drawable/ic_about_us_logo"
+        android:layout_gravity="center_horizontal"
+        tools:ignore="contentDescription"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="40dp"
+        android:textSize="@dimen/font_size_15"
+        android:textColor="@color/cl_333333"
+        android:text="@string/about_baby_cube"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="60dp"
+        android:textSize="@dimen/font_size_15"
+        android:textColor="@color/cl_333333"
+        android:text="@string/baby_cube_mobile"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="12dp"
+        android:textSize="@dimen/font_size_15"
+        android:textColor="@color/cl_333333"
+        android:text="@string/baby_cube_email"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
+        android:layout_marginTop="12dp"
+        android:textSize="@dimen/font_size_15"
+        android:textColor="@color/cl_333333"
+        android:text="@string/baby_cube_address"
+        />
+</LinearLayout>

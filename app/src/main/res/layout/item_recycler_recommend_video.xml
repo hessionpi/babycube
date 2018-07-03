@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginTop="20dp"
+    android:background="@drawable/shape_white_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_video_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:text="妊娠期敏感或出血牙龈正常吗？"
+        android:textColor="@color/cl_333333"
+        android:textSize="@dimen/font_size_15" />
+
+    <TextView
+        android:id="@+id/tv_video_category"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="8dp"
+        android:text="专家意见"
+        android:textColor="@color/cl_bbbbbb"
+        android:textSize="@dimen/font_size_12" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        >
+
+        <ImageView
+            android:id="@+id/iv_video_img"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/ic_cover_default"
+            />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/sy_icon_play" />
+
+        <TextView
+            android:id="@+id/tv_video_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:background="@drawable/shape_gray_bg"
+            android:text="12:12"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_12" />
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/tv_video_explain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="12dp"
+        android:lineSpacingExtra="3dp"
+        tools:text="分开覅二级开发呢人机可如果投入近高投入可能突然卡两天嘛黏土矿股个看老客户每年阖家团圆来看漫画伊立替康例莱卡棉"
+        android:textColor="@color/cl_999999"
+        android:textSize="@dimen/font_size_14" />
+</LinearLayout>

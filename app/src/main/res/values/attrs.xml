@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- for count editText -->
+    <declare-styleable name="CountEditText">
+        <attr name="ce_maxLength" format="integer"/>
+        <attr name="ce_hint" format="string"/>
+        <attr name="ce_edit_text_size" format="dimension"/>
+        <attr name="ce_edit_text_color" format="color"/>
+        <attr name="ce_count_text_size" format="dimension"/>
+        <attr name="ce_countMode" format="enum">
+            <enum name="Remaining" value="1"></enum>
+            <enum name="Percentage" value="2"></enum>
+        </attr>
+    </declare-styleable>
+    <!-- end -->
+
+    <!-- 自定义的tools bar -->
+    <declare-styleable name="Toolsbar">
+        <attr name="background" format="reference"/>
+        <!-- 中间标题部分 -->
+        <attr name="titleText" format="string" />
+        <attr name="titleColor" format="reference" />
+
+        <!-- 左侧action -->
+        <attr name="actionLeftBackground" format="reference" />
+        <attr name="actionLeftText" format="string" />
+
+        <!-- 右侧action -->
+        <attr name="actionRightText" format="string" />
+        <attr name="actionRightColor" format="reference" />
+        <attr name="actionRightBackground" format="reference" />
+    </declare-styleable>
+
+
+    <!-- for circle indicator style-->
+    <declare-styleable name="CircleIndicator">
+        <attr name="ci_width" format="dimension" />
+        <attr name="ci_height" format="dimension" />
+        <attr name="ci_margin" format="dimension" />
+        <attr name="ci_animator" format="reference" />
+        <attr name="ci_animator_reverse" format="reference" />
+        <attr name="ci_drawable" format="reference" />
+        <attr name="ci_drawable_unselected" format="reference" />
+    </declare-styleable>
+    <!-- circle indicator end -->
+
+
+    <declare-styleable name="AutoPlayRecyclerView">
+        <attr name="timeInterval" format="integer" />
+        <attr name="direction" format="enum">
+            <enum name="left" value="1" />
+            <enum name="right" value="2" />
+        </attr>
+    </declare-styleable>
+
+
+</resources>

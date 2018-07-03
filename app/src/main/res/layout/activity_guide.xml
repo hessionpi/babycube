@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_splash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:overScrollMode="never" />
+
+    <TextView
+        android:id="@+id/tv_skip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:paddingStart="20dp"
+        android:paddingEnd="25dp"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:text="跳过>>"
+        android:textColor="@color/cl_666666"
+        android:textSize="@dimen/font_size_15"
+        />
+
+    <com.rjzd.baby.ui.widget.CircleIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="12dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="bottom"
+        >
+    </com.rjzd.baby.ui.widget.CircleIndicator>
+</FrameLayout>

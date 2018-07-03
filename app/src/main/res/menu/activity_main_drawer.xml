@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/nav_user_info"
+            android:icon="@drawable/ic_nav_menu_uinfo"
+            android:title="@string/nav_menu_userinfo" />
+        <item
+            android:id="@+id/nav_my_baby"
+            android:icon="@drawable/ic_nav_menu_mybaby"
+            android:title="@string/nav_menu_mybaby" />
+        <item
+            android:id="@+id/nav_account"
+            android:icon="@drawable/ic_menu_account_safe"
+            android:title="@string/nav_menu_account_safe" />
+        <item
+            android:id="@+id/nav_recommend"
+            android:icon="@drawable/ic_nav_menu_recommend"
+            android:title="@string/nav_menu_recommend" />
+        <item
+            android:id="@+id/nav_praise"
+            android:icon="@drawable/ic_nav_menu_praise"
+            android:title="@string/nav_menu_comment" />
+        <item
+            android:id="@+id/nav_about_us"
+            android:icon="@drawable/ic_nav_menu_about_us"
+            android:title="@string/nav_menu_about_us" />
+        <item
+            android:icon="@null"
+            android:title="" />
+        <item
+            android:icon="@null"
+            android:title="" />
+    </group>
+
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none"
+        >
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_nav_menu_logout"
+            android:title="@string/nav_menu_logout" />
+    </group>
+
+    <!--<item android:title="">
+        <menu>
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_menu_share"
+                android:title="@string/nav_menu_logout" />
+        </menu>
+    </item>-->
+
+</menu>

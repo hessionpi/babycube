@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/cl_primary_background"
+    tools:context=".ui.activity.MainActivity">
+
+    <com.rjzd.baby.ui.widget.ToolsbarView
+        android:id="@+id/layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actionLeftBackground="@drawable/ic_toolbar_back"
+        app:titleText="@string/my_baby"
+        app:actionRightText="@string/add"
+        >
+    </com.rjzd.baby.ui.widget.ToolsbarView>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_mybabys"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        tools:listitem="@layout/recycle_item_mybaby"
+        >
+    </android.support.v7.widget.RecyclerView>
+
+</LinearLayout>

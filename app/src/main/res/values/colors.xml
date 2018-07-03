@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/cl_primary</color>
+    <color name="colorPrimaryDark">@color/cl_primary</color>
+    <color name="colorAccent">#FF4081</color>
+
+    <color name="cl_primary">#2cacc0</color>
+    <color name="cl_primary_background">#f5f5f5</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="colorTitlebar">@color/white</color>
+    <color name="cl_line">#dddddd</color>
+
+    <color name="white_80unalpha">#ccffffff</color>
+
+    <!-- 纯黑色的不透明度 -->
+    <color name="black10unalpha">#1A000000</color>
+    <color name="black20unalpha">#33000000</color>
+    <color name="black30unalpha">#4D000000</color>
+    <color name="black40unalpha">#66000000</color>
+    <color name="black50unalpha">#80000000</color>
+    <color name="black60unalpha">#99000000</color>
+    <color name="black70unalpha">#B3000000</color>
+    <color name="black80unalpha">#CC000000</color>
+    <color name="black90unalpha">#E6000000</color>
+    <!-- it's end -->
+
+    <color name="biz_audio_progress_bg">#00b2ff</color>
+    <color name="biz_audio_progress_first">#ffffff</color>
+    <color name="biz_audio_progress_second">#6b6666</color>
+    <color name="colorTintRed">#FF4C58</color>
+    <color name="black_a10_color">#1a000000</color>
+
+    <color name="cl_333333">#333333</color>
+    <color name="cl_aaaaaa">#aaaaaa</color>
+    <color name="cl_666666">#666666</color>
+    <color name="cl_999999">#999999</color>
+    <color name="cl_888888">#888888</color>
+    <color name="cl_bbbbbb">#bbbbbb</color>
+    <color name="cl_f5f5f5">#f5f5f5</color>
+    <color name="cl_c5e8ee">#c5e8ee</color>
+    <color name="cl_2a7f8e">#2a7f8e</color>
+    <color name="cl_d5eef2">#d5eef2</color>
+    <color name="cl_2c2c2c">#2c2c2c</color>
+    <color name="cl_dividing_line">#e8e8e8</color>
+    <color name="cl_fd73a7">#fd73a7</color>
+    <color name="cl_acdee7">#acdee7</color>
+    <color name="cl_9b9b9b">#9b9b9b</color>
+    <color name="cl_cccccc">#cccccc</color>
+    <color name="cl_777777">#777777</color>
+    <color name="cl_b3ffffff">#b3ffffff</color>
+    <color name="cl_bfe6ec">#bfe6ec</color>
+    <color name="cl_222222">#222222</color>
+    <color name="cl_e8e8e8">#e8e8e8</color>
+    <color name="cl_fafafa">#fafafa</color>
+    <color name="cl_c5c5c5">#c5c5c5</color>
+    <color name="cl_e5e5e5">#e5e5e5</color>
+    <color name="cl_555555">#555555</color>
+
+
+</resources>

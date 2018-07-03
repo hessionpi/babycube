@@ -1,0 +1,60 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="elevation">0dp</item>
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!-- Drawerlayout 菜单文字颜色和大小统一设置-->
+    <style name="MenuTextStyle">
+        <item name="android:textColor">@color/cl_333333</item>
+        <item name="android:textSize">@dimen/font_size_15</item>
+    </style>
+
+    <!-- Media Controller -->
+    <style name="video_progressbar_style">
+        <item name="android:maxWidth">43.0dip</item>
+        <item name="android:maxHeight">43.0dip</item>
+        <item name="android:indeterminateDrawable">@drawable/biz_news_detailpage_loading_large_anim
+        </item>
+        <item name="android:minWidth">43.0dip</item>
+        <item name="android:minHeight">43.0dip</item>
+    </style>
+    <!-- end -->
+
+    <!-- 弹出对话框样式  -->
+    <style name="commentDialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <!--<item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>-->
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowCloseOnTouchOutside">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <!-- end -->
+
+    <style name="mProgress_horizontal">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progressbar_horizontal
+        </item><!-- progress_horizontal -->
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+        <item name="android:minHeight">20dip</item>
+        <item name="android:maxHeight">20dip</item>
+    </style>
+
+    <style name="TabLayoutTextStyle" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">@dimen/font_size_15</item>
+    </style>
+</resources>

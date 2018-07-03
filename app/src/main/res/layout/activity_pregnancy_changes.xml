@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.rjzd.baby.ui.activity.PregnancyChangesActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:background="@color/cl_primary"
+        android:elevation="3dp" >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:padding="9dp"
+            android:src="@drawable/ic_toolbar_back_shadow"
+            tools:ignore="contentDescription"
+            />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_centerInParent="true"
+            >
+
+            <RadioGroup
+                android:id="@+id/rg_pregnancy"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                >
+
+                <RadioButton
+                    android:id="@+id/rb_baby"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="10dp"
+                    android:text="胎宝宝"
+                    android:textColor="@color/selector_textcolor_tab"
+                    android:textSize="@dimen/font_size_16"
+                    android:drawablePadding="4dp"
+                    android:drawableBottom="@drawable/selector_tab"
+                    android:checked="true"
+                    android:button="@null"
+                    />
+
+                <RadioButton
+                    android:id="@+id/rb_mom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="20dp"
+                    android:layout_marginStart="20dp"
+                    android:button="@null"
+                    android:checked="false"
+                    android:drawableBottom="@drawable/selector_tab"
+                    android:drawablePadding="4dp"
+                    android:text="准妈妈"
+                    android:textColor="@color/selector_textcolor_tab"
+                    android:textSize="@dimen/font_size_16" />
+            </RadioGroup>
+
+        </FrameLayout>
+
+
+    </RelativeLayout>
+   <!-- <android.support.v4.view.ViewPager
+        android:id="@+id/baby_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="2dp"
+        android:overScrollMode="never">
+
+    </android.support.v4.view.ViewPager>
+-->
+    <LinearLayout
+        android:id="@+id/ll_baby"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/baby_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:tabBackground="@drawable/tablayout_background"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@color/cl_primary"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="@color/cl_2a7f8e" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/baby_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/ll_mom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mom_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            app:tabBackground="@drawable/tablayout_background"
+            app:tabIndicatorHeight="0dp"
+            app:tabSelectedTextColor="@color/cl_primary"
+            app:tabTextAppearance="@style/TabLayoutTextStyle"
+            app:tabTextColor="@color/cl_2a7f8e" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/mom_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+</LinearLayout>

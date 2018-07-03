@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@color/white"
+    >
+
+    <!--备孕和宝宝-->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:gravity="center"
+        android:text="查看更多"
+        android:textSize="@dimen/font_size_13"
+        android:textColor="@color/cl_888888"
+         />
+
+</LinearLayout>

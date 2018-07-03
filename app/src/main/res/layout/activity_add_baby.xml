@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_add_baby"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/cl_primary_background"
+    android:orientation="vertical"
+    tools:context=".ui.activity.MainActivity">
+
+    <com.rjzd.baby.ui.widget.ToolsbarView
+        android:id="@+id/layout_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:actionLeftBackground="@drawable/ic_toolbar_back"
+        app:titleText="@string/add"
+        >
+
+    </com.rjzd.baby.ui.widget.ToolsbarView>
+
+    <TextView
+        android:id="@+id/tv_title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:text="选择当前状态"
+        android:textColor="@color/cl_primary"
+        android:textSize="@dimen/font_size_24"
+        android:visibility="gone"/>
+
+    <RadioGroup
+        android:id="@+id/rg_baby_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_baby_preparing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawablePadding="15dp"
+            android:drawableTop="@drawable/selector_rb_baby_preparing"
+            android:gravity="center"
+            android:text="@string/baby_preparing"
+            android:textColor="@color/selector_textcolor_baby_add"
+            android:textSize="@dimen/font_size_14" />
+
+        <RadioButton
+            android:id="@+id/rb_baby_pregnancy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:checked="true"
+            android:drawablePadding="15dp"
+            android:drawableTop="@drawable/selector_rb_pregnancy"
+            android:gravity="center"
+            android:text="@string/baby_in_mom"
+            android:textColor="@color/selector_textcolor_baby_add"
+            android:textSize="@dimen/font_size_14" />
+
+        <RadioButton
+            android:id="@+id/rb_baby_born"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.0"
+            android:button="@null"
+            android:drawablePadding="15dp"
+            android:drawableTop="@drawable/selector_rb_baby_born"
+            android:gravity="center"
+            android:text="@string/baby_born"
+            android:textColor="@color/selector_textcolor_baby_add"
+            android:textSize="@dimen/font_size_14" />
+    </RadioGroup>
+
+    <!-- 备孕布局-->
+    <ViewStub
+        android:id="@+id/vs_preparing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:layout="@layout/layout_stub_preparing" />
+
+    <!-- 怀孕中布局-->
+    <include
+        android:id="@+id/layout_pregnancy"
+        layout="@layout/layout_stub_pregnancy" />
+
+    <!-- 已出生布局-->
+    <ViewStub
+        android:id="@+id/vs_born"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="65dp"
+        android:layout="@layout/layout_stub_born" />
+
+    <Button
+        android:id="@+id/btn_done"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shape_done_bg"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:textSize="@dimen/font_size_16" />
+</LinearLayout>

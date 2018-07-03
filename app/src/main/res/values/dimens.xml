@@ -1,0 +1,58 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_padding">16dp</dimen>
+    <dimen name="activity_vertical_padding">16dp</dimen>
+
+
+    <dimen name="nav_header_vertical_spacing">16dp</dimen>
+    <dimen name="nav_header_height">260dp</dimen>
+
+
+    <!--标题栏文字大小-->
+    <dimen name="font_size_toolsbar">17sp</dimen>
+    <!--  定义文字大小 -->
+    <dimen name="font_size_8">8sp</dimen>
+    <dimen name="font_size_9">9sp</dimen>
+    <dimen name="font_size_10">10sp</dimen>
+    <dimen name="font_size_11">11sp</dimen>
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="font_size_13">13sp</dimen>
+    <dimen name="font_size_14">14sp</dimen>
+    <dimen name="font_size_15">15sp</dimen>
+    <dimen name="font_size_16">16sp</dimen>
+    <dimen name="font_size_17">17sp</dimen>
+    <dimen name="font_size_18">18sp</dimen>
+    <dimen name="font_size_19">19sp</dimen>
+    <dimen name="font_size_20">20sp</dimen>
+    <dimen name="font_size_21">21sp</dimen>
+    <dimen name="font_size_22">22sp</dimen>
+    <dimen name="font_size_23">23sp</dimen>
+    <dimen name="font_size_24">24sp</dimen>
+    <dimen name="font_size_25">25sp</dimen>
+    <dimen name="font_size_28">28sp</dimen>
+    <dimen name="font_size_30">30sp</dimen>
+
+
+    <dimen name="height_toolbar">48dp</dimen>
+    <!--  底部导航  -->
+    <dimen name="height_navigation_bottom">48dp</dimen>
+
+
+    <!-- MEDIA CONTROLLER -->
+    <dimen name="media_controller_text_size">14sp</dimen>
+    <dimen name="media_controller_seekbar_width">32dip</dimen>
+    <dimen name="media_controller_seekbar_height">32dip</dimen>
+    <dimen name="media_controller_top_margin">80dip</dimen>
+    <dimen name="media_controller_bottom_margin">12dip</dimen>
+    <dimen name="media_controller_view_height">48dip</dimen>
+    <dimen name="media_controller_button_height">52dip</dimen>
+    <dimen name="media_controller_button_width">71dip</dimen>
+
+    <dimen name="media_controller_resolution_text_height">44dp</dimen>
+    <dimen name="media_controller_resolution_text_width">300dp</dimen>
+    <dimen name="media_panel_width">330dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <!-- it's end -->
+
+
+</resources>

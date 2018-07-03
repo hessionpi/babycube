@@ -1,0 +1,129 @@
+<resources>
+    <string name="app_name">宝贝魔方</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="open_now">立即体验</string>
+
+    <string name="nav_menu_userinfo">个人资料</string>
+    <string name="nav_menu_mybaby">我的宝宝</string>
+    <string name="nav_menu_account_safe">账户安全</string>
+    <string name="nav_menu_recommend">推荐给朋友</string>
+    <string name="nav_menu_comment">给个好评</string>
+    <string name="nav_menu_about_us">关于我们</string>
+    <string name="nav_menu_logout">退出登录</string>
+    <string name="tips_register_exit">是否退出注册？</string>
+    <string name="about_baby_cube">宝贝魔方致力于打造精选原创视频等内容，以不同阶段的备孕、孕中、育儿人群提供一站式知识指南，用简单、实用、严肃的视频等形式让家长快速掌握育婴知识。</string>
+    <string name="baby_cube_mobile">电话：010-84726886</string>
+    <string name="baby_cube_email">邮件：bd@zdcps.com</string>
+    <string name="baby_cube_address">地址：北京市朝阳区望京中环南路9号望京大厦B座13层</string>
+
+    <string name="baby_preparing">备孕中</string>
+    <string name="baby_in_mom">怀孕中</string>
+    <string name="baby_born">宝宝已出生</string>
+    <string name="last_menstruation">末次月经开始时间</string>
+    <string name="previous_menstruation">上次月经开始时间</string>
+    <string name="duration_menstruation">月经持续天数</string>
+    <string name="cycle_menstruation">月经周期</string>
+    <string name="due_date">预产期</string>
+    <string name="calculate_due_date">计算预产期</string>
+    <string name="calculate">计算</string>
+    <string name="cancel_calculate">取消计算</string>
+    <string name="baby_nick_name">宝宝昵称</string>
+    <string name="baby_sex">宝宝性别</string>
+    <string name="baby_birthday">宝宝生日</string>
+    <string name="choose_date">选择日期</string>
+    <string name="neonatal">新生儿</string>
+    <string name="infant">婴儿</string>
+    <string name="child">幼儿</string>
+
+    <string name="my_baby">我的宝宝</string>
+    <string name="add">添加</string>
+    <string name="change">修改</string>
+    <string name="delete">删除</string>
+    <string name="done">完成</string>
+
+    <string name="sharpness">清晰度</string>
+    <string name="fluency">流畅</string>
+    <string name="hd">高清</string>
+    <string name="super_hd">超清</string>
+    <string name="original">原画</string>
+    <string name="tips_play_with4g">播放将消耗%1$s流量是否继续播放</string>
+    <string name="play_continue">继续播放</string>
+    <string name="share_to">分享到：</string>
+    <string name="wx_circle">朋友圈</string>
+    <string name="wx_friend">微信</string>
+    <string name="play_again">重播</string>
+    <string name="load_again">重新加载</string>
+    <string name="maybe_like">也许你还喜欢</string>
+    <string name="tips_discuss_empty">亲，快来留言吧</string>
+    <string name="hint_discuss">评论…</string>
+    <string name="publish">发布</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="tips_save_warning">是否保存修改？</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="tips_delete_baby">确定删除该宝宝档案吗？</string>
+    <string name="tips_logout">确定要退出登录吗？</string>
+    <string name="load_failed">加载失败</string>
+    <string name="no_network">当前无网络，请检查网络设置</string>
+    <string name="reload">重新加载</string>
+    <string name="choose_location">所在地区</string>
+
+
+    <string name="userinfo">个人资料</string>
+    <string name="change_headpic">修改头像</string>
+    <string name="nickname">昵称</string>
+    <string name="sex">性别</string>
+    <string name="location">地区</string>
+    <string name="hight">身高</string>
+    <string name="weight">体重</string>
+    <string name="birthday">生日</string>
+    <string name="modify_proper_nickname">修改昵称</string>
+    <string name="save">保存</string>
+
+
+    <string name="load_fail">加载失败，点击屏幕重新加载</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <string name="welcome">欢迎来到宝贝魔方</string>
+    <string name="login">登录</string>
+    <string name="register">注册</string>
+    <string name="other">其他方式</string>
+    <string name="phone">手机</string>
+    <string name="hint_phone">请输入手机号</string>
+    <string name="password">密码</string>
+    <string name="hint_password">请输入密码</string>
+    <string name="forget_password">忘记密码？</string>
+    <string name="forget_pwd">忘记密码</string>
+    <string name="find_password">点此找回</string>
+    <string name="gain_code">获取验证码</string>
+    <string name="new_pwd">设置新密码</string>
+    <string name="code">验证码</string>
+    <string name="my_phone">您的手机号是？</string>
+    <string name="read">阅读并同意</string>
+    <string name="pact">“使用条款和隐私政策”</string>
+    <string name="next">下一步</string>
+    <string name="my_code">收到短信验证码了吗？</string>
+
+
+</resources>
