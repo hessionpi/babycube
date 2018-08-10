@@ -1,10 +1,12 @@
 package com.rjzd.baby.ui.adapter;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.rjzd.baby.R;
 import com.rjzd.baby.ui.adapter.recycleadapter.BaseViewHolder;
 import com.rjzd.baby.ui.adapter.recycleadapter.XMBaseAdapter;
@@ -36,73 +38,66 @@ public class BabyManageAdapter extends XMBaseAdapter<BabyInfo>{
 
     private class BabyManageHolder extends BaseViewHolder<BabyInfo>{
 
-        private ImageView mBabyPhoto;
-        private TextView mBabyName;
-        private TextView mBabyBirthDay;
-        private TextView mUpdate;
-        private TextView mDelete;
+        ImageView ivBabyStatus;
+        ImageView ivBabyDelete;
+        ImageView ivBabyPhoto;
+        TextView tvBabyBirthday;
+        TextView tvBabySex;
+        TextView tvBabyName;
 
-        public BabyManageHolder(ViewGroup parent, int res) {
+        BabyManageHolder(ViewGroup parent, int res) {
             super(parent, res);
-            mBabyPhoto = $(R.id.iv_baby_avatar);
-            mBabyName = $(R.id.tv_baby_name);
-            mBabyBirthDay = $(R.id.tv_baby_birthday);
-            mUpdate = $(R.id.tv_update_baby);
-            mDelete = $(R.id.tv_update_delete);
+            ivBabyStatus = $(R.id.iv_baby_status);
+            ivBabyDelete = $(R.id.iv_baby_delete);
+            ivBabyPhoto = $(R.id.iv_baby_photo);
+            tvBabyBirthday = $(R.id.tv_birthday);
+            tvBabySex = $(R.id.tv_sex);
+            tvBabyName = $(R.id.tv_baby_name);
         }
 
         @Override
         public void setData(BabyInfo data) {
-            int defaultEmptyDrawable = 0;
-            String title = null;
-            String date = null;
-            switch (data.getBabyStatus()){
+            int position = BabyManageAdapter.this.getPosition(data);
+            if(1 == data.getBabyStatus()){
+                ivBabyStatus.setBackgroundResource(R.drawable.ic_mybaby_pregancy);
+            }else if(2 == data.getBabyStatus()){
+                ivBabyStatus.setBackgroundResource(R.drawable.ic_mybaby_birth);
+            }
+            if(TextUtils.isEmpty(data.getBabyThumb())){
+                ivBabyPhoto.setBackgroundResource(R.drawable.ic_default_camera);
+            }else{
+                ImageLoader.loadTransformImage(mContext,data.getBabyThumb(),ivBabyPhoto,0);
+            }
+            tvBabyBirthday.setText(data.getBabyBirthday());
+            int sex = data.getBabySex();
+            String sexStr = "未知";
+            switch (sex){
                 case 0:
-                    defaultEmptyDrawable = R.drawable.ic_default_prepar;
-                    title = "备孕中";
-                    date = "末次月经:"+data.getLastMenstruation();
+                    sexStr = "未知";
                     break;
 
                 case 1:
-                    defaultEmptyDrawable = R.drawable.ic_default_pregnancy;
-                    title = "怀孕中";
-                    date = "预产期:"+data.getDueDate();
+                    sexStr = "男";
                     break;
 
                 case 2:
-                    if(data.getBabySex()==1){
-                        // 男宝宝
-                        defaultEmptyDrawable = R.drawable.ic_default_baby_boy;
-                    }else if(data.getBabySex()==2){
-                        // 女宝宝
-                        defaultEmptyDrawable = R.drawable.ic_default_baby_girl;
-                    }
-                    title = data.getBabyName();
-                    date = data.getBabyBirthday();
+                    sexStr = "女";
                     break;
             }
-            ImageLoader.load(mContext,data.getBabyThumb(),defaultEmptyDrawable,defaultEmptyDrawable,mBabyPhoto);
-            mBabyName.setText(title);
-            mBabyBirthDay.setText(date);
-            mUpdate.setOnClickListener(new View.OnClickListener() {
+            tvBabySex.setText(sexStr);
+            tvBabyName.setText(data.getBabyName());
+
+            ivBabyDelete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    babyManageListener.onBabyUpdate(data);
-                }
-            });
-            mDelete.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    babyManageListener.onBabyDelete(data.getBabyId(),BabyManageAdapter.this.getPosition(data));
+                    babyManageListener.onBabyDelete(data.getBabyId(),data.getBabyStatus(),position);
                 }
             });
         }
     }
 
     public interface OnBabyManageListener {
-        void onBabyUpdate(BabyInfo baby);
-
-        void onBabyDelete(int babyId,int position);
+        void onBabyDelete(int babyId,int babyStatus,int position);
     }
 
 

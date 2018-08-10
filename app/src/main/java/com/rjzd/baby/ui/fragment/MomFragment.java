@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.rjzd.baby.R;
+import com.rjzd.baby.api.ExceptionHandler;
 import com.rjzd.baby.entity.BaseResponse;
 import com.rjzd.baby.presenter.impl.BabyPresenter;
 import com.rjzd.baby.tools.NetWorkUtil;
@@ -99,8 +100,8 @@ BabyPresenter babyPresenter;
     }
 
     @Override
-    public void onFailShow(int flag) {
-
+    public void onFailShow(int errorCode) {
+        ExceptionHandler.handleException(getActivity(),errorCode);
     }
 
     @Override

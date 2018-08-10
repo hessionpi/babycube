@@ -3,20 +3,20 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@android:id/background">
         <shape android:shape="line">
-            <stroke android:width="2.0dip" android:color="@color/black20unalpha" />
+            <stroke android:width="4dp" android:color="@color/cl_bababa" />
         </shape>
     </item>
     <item android:id="@android:id/secondaryProgress">
         <clip>
             <shape android:shape="line">
-                <stroke android:width="2.0dip" android:color="@color/black60unalpha" />
+                <stroke android:width="4dp" android:color="@color/cl_2e2e2e" />
             </shape>
         </clip>
     </item>
     <item android:id="@android:id/progress">
         <clip>
             <shape android:shape="line">
-                <stroke android:width="2.0dip" android:color="@color/cl_primary" />
+                <stroke android:width="4dp" android:color="@color/cl_primary" />
             </shape>
         </clip>
     </item>

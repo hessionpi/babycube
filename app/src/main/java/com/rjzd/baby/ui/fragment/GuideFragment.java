@@ -11,8 +11,6 @@ import com.rjzd.baby.R;
 import com.rjzd.baby.model.LoginModel;
 import com.rjzd.baby.model.UserInfoCenter;
 import com.rjzd.baby.ui.activity.MainActivity;
-import com.rjzd.baby.ui.activity.MemberActivity;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -68,13 +66,7 @@ public class GuideFragment extends Fragment {
         }
 
         btnOpenNow.setOnClickListener((View v) -> {
-            // 判断是进入首页还是去注册、登录
-            LoginModel model = UserInfoCenter.getInstance().getLoginModel();
-            if (model == null) {
-                MemberActivity.startActivity(getActivity());
-            } else {
-                MainActivity.startActivity(getActivity());
-            }
+            MainActivity.startActivity(getActivity());
             getActivity().finish();
         });
     }

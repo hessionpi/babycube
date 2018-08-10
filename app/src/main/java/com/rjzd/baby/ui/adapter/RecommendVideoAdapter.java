@@ -34,7 +34,6 @@ public class RecommendVideoAdapter extends XMBaseAdapter<SimpleVideo> {
 
         private TextView mDuration;
         private TextView mTitle;
-        private TextView tv_video_category;
         private ImageView iv_video_img;
         private TextView tv_video_explain;
 
@@ -42,7 +41,6 @@ public class RecommendVideoAdapter extends XMBaseAdapter<SimpleVideo> {
             super(parent, res);
             mDuration = $(R.id.tv_video_duration);
             mTitle = $(R.id.tv_video_title);
-            tv_video_category = $(R.id.tv_video_category);
             iv_video_img = $(R.id.iv_video_img);
             tv_video_explain = $(R.id.tv_video_explain);
         }
@@ -51,7 +49,6 @@ public class RecommendVideoAdapter extends XMBaseAdapter<SimpleVideo> {
         public void setData(SimpleVideo data) {
             ImageLoader.load(mContext,data.getVideoCover(),R.drawable.ic_cover_default,R.drawable.ic_cover_default,iv_video_img);
             mTitle.setText(data.getVideoTitle());
-            tv_video_category.setText(data.getVideoClassify());
             mDuration.setText(ZDUtils.formattedTime(data.getVideoDuration()));
             tv_video_explain.setText(data.getVideoDescription());
         }

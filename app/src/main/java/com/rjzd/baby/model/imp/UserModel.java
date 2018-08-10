@@ -63,10 +63,9 @@ public class UserModel {
      * 用户登录（动态密码登录/账号密码登录）
      * @param smsCode               短信验证码
      * @param mobile                手机号
-     * @param password              登录密码
      */
-    public Subscription login(String smsCode, String mobile, String password){
-        Observable<BaseResponse<ResLogin>> observable = api.login(smsCode,mobile,password);
+    public Subscription login(String smsCode, String mobile){
+        Observable<BaseResponse<ResLogin>> observable = api.login(smsCode,mobile);
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<BaseResponse<ResLogin>>() {

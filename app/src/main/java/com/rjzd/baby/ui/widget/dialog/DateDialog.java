@@ -40,11 +40,14 @@ public class DateDialog extends DialogFragment {
         ArrayList<String> years = bundle.getStringArrayList("years");
         ArrayList<String> months = bundle.getStringArrayList("months");
         ArrayList<String> days = bundle.getStringArrayList("days");
-
+        int defaultYearPosition = bundle.getInt("default_year_position");
+        int defaultMonthPosition = bundle.getInt("default_month_position");
+        int defaultDayPosition = bundle.getInt("default_day_position");
 
         // 自定义轮子View
         WheelView wvYear = mDialog.findViewById(R.id.wheel_year);
         wvYear.setItems(years);
+        wvYear.setSeletion(defaultYearPosition);
         year = wvYear.getSeletedItem();
 
         WheelView wvMonth = mDialog.findViewById(R.id.wheel_month);
@@ -53,10 +56,12 @@ public class DateDialog extends DialogFragment {
         }else{
             wvMonth.setItems(months);
         }
+        wvMonth.setSeletion(defaultMonthPosition);
         month = wvMonth.getSeletedItem();
 
         WheelView wvDay = mDialog.findViewById(R.id.wheel_day);
         wvDay.setItems(days);
+        wvDay.setSeletion(defaultDayPosition);
         day = wvDay.getSeletedItem();
 
         Button mCancel = mDialog.findViewById(R.id.btn_cancel);
@@ -87,7 +92,7 @@ public class DateDialog extends DialogFragment {
         });
         mSure.setOnClickListener((View v) -> {
             mDialog.dismiss();
-            dialogListener.onPositive(year,month,day);
+            dialogListener.onPositive(year,month,day,String.valueOf(wvYear.getSeletedIndex()),String.valueOf(wvMonth.getSeletedIndex()),String.valueOf(wvDay.getSeletedIndex()));
         });
         return mDialog;
     }

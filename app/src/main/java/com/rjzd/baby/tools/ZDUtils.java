@@ -1,5 +1,7 @@
 package com.rjzd.baby.tools;
 
+import android.text.TextUtils;
+
 import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -143,10 +145,10 @@ public class ZDUtils {
         return df.format(date);
     }
 
-    private static Date getFormatDate(String formatDate){
-        SimpleDateFormat df = new SimpleDateFormat(formatDate);
+    private static Date getFormatDate(String format,String dt){
+        SimpleDateFormat df = new SimpleDateFormat(format);
         try {
-            Date date = df.parse(formatDate);
+            Date date = df.parse(dt);
             return date;
         } catch (ParseException e) {
             e.printStackTrace();
@@ -157,18 +159,27 @@ public class ZDUtils {
     /**
      * 提取格式化后的日期字符串中年、月、日等信息
      *
-     * @param formatDate        格式化日期字符串  2018-06-29
+     * @param format            格式yyyy-MM-dd
+     * @param date              日期 2018-01-09
      * @param field             年月日等字段名   Calendar.YEAR   Calendar.MONTH   DAY_OF_MONTH
      * @return 年或月或日 信息
      *
      * 注：Calendar.MONTH 是从0开始计算，所以最终得到的返回需要 +1
      */
-    public static int getDateField(String formatDate,int field){
-        Date dt = getFormatDate(formatDate);
+    public static int getDateField(String format,String date,String field){
+        Date dt = getFormatDate(format,date);
         if(null!=dt){
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(dt);
-            calendar.get(field);
+            if(!TextUtils.isEmpty(field) ){
+                if(field.equals("year")){
+                    return calendar.get(Calendar.YEAR);
+                }else if(field.equals("month")){
+                    return calendar.get(Calendar.MONTH) + 1;
+                }else if(field.equals("day")){
+                    return calendar.get(Calendar.DAY_OF_MONTH);
+                }
+            }
         }
         return 0;
     }

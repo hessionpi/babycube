@@ -4,12 +4,12 @@ import com.rjzd.baby.BabyConstants;
 import com.rjzd.baby.api.BabyAPI;
 import com.rjzd.baby.entity.BaseResponse;
 import com.rjzd.baby.model.IListener;
+import com.zd.baby.api.model.ResAddBaby;
 import com.zd.baby.api.model.ResAllBaby;
-import com.zd.baby.api.model.ResBabyBaseInfo;
+import com.zd.baby.api.model.ResBabyGrowthCycle;
 import com.zd.baby.api.model.ResPregnancyBabyChanges;
 import com.zd.baby.api.model.ResPregnancyMomChanges;
 import com.zd.baby.api.model.ResRecommendInfo;
-import com.zd.baby.api.model.ResUpdateRecommend;
 
 import rx.Observable;
 import rx.Subscriber;
@@ -61,20 +61,16 @@ public class BabyModel {
 
     /**
      * 添加 baby
-     * @param babyStatus                            宝宝状态
-     * @param dueDate                               预产期
      * @param babySex                               宝宝性别
      * @param babyName                              宝宝姓名
      * @param babyBirthday                          宝宝生日
-     * @param lastMenstruation                      末次月经开始时间
-     * @param duration                              月经持续时间
+     *
      */
-    public Subscription addBaby(int babyStatus,String dueDate,int babySex,
-                                   String babyName,String babyBirthday,String lastMenstruation,int duration,int circle){
-        Observable<BaseResponse> observable = babyAPI.addBaby(babyStatus,dueDate,babySex,babyName,babyBirthday,lastMenstruation,duration,circle);
+    public Subscription addBaby(int babySex,String babyName, String babyBirthday){
+        Observable<BaseResponse<ResAddBaby>> observable = babyAPI.addBaby(babySex,babyName,babyBirthday);
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResponse>() {
+                .subscribe(new Subscriber<BaseResponse<ResAddBaby>>() {
                     @Override
                     public void onCompleted() {
 
@@ -86,7 +82,7 @@ public class BabyModel {
                     }
 
                     @Override
-                    public void onNext(BaseResponse baseResponse) {
+                    public void onNext(BaseResponse<ResAddBaby> baseResponse) {
                         listener.onSuccess(baseResponse, BabyConstants.BABY_MANAGE_ADD);
                     }
                 });
@@ -94,18 +90,14 @@ public class BabyModel {
 
     /**
      * 更新宝宝信息
-     * @param babyId                                宝宝id
-     * @param babyStatus                            宝宝状态
-     * @param dueDate                               预产期
-     * @param babySex                               宝宝性别
-     * @param babyName                              宝宝姓名
-     * @param babyBirthday                          宝宝生日
-     * @param lastMenstruation                      末次月经开始时间
-     * @param duration                              月经持续时间
+     * @param babyId           宝宝id
+     * @param babySex          宝宝性别
+     * @param babyName         宝宝姓名
+     * @param babyBirthday     宝宝生日
+     * @param babyThumb        宝宝头像缩略图
      */
-    public Subscription updateBaby(int babyId,int babyStatus,String dueDate,int babySex,
-                                   String babyName,String babyBirthday,String lastMenstruation,int duration){
-        Observable<BaseResponse> observable = babyAPI.updateBaby(babyId,babyStatus,dueDate,babySex,babyName,babyBirthday,lastMenstruation,duration);
+    public Subscription updateBaby(int babyId, int babySex, String babyName, String babyBirthday,String babyThumb){
+        Observable<BaseResponse> observable = babyAPI.updateBaby(babyId,babySex,babyName,babyBirthday,babyThumb);
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<BaseResponse>() {
@@ -213,11 +205,11 @@ public Subscription pregnancyBabyChanges(int babyId,int week){
 
      * @param babyId            宝宝id
      */
-    public Subscription babyBaseInfo(int babyId){
-        Observable<BaseResponse<ResBabyBaseInfo>> observable = babyAPI.babyBaseInfo(babyId);
+    public Subscription babyGrowthCycle(int babyId){
+        Observable<BaseResponse<ResBabyGrowthCycle>> observable = babyAPI.babyGrowthCycle(babyId);
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResponse<ResBabyBaseInfo>>() {
+                .subscribe(new Subscriber<BaseResponse<ResBabyGrowthCycle>>() {
                     @Override
                     public void onCompleted() {
 
@@ -225,12 +217,12 @@ public Subscription pregnancyBabyChanges(int babyId,int week){
 
                     @Override
                     public void onError(Throwable t) {
-                        listener.onFailed(t,BabyConstants.BABY_INFO);
+                        listener.onFailed(t,BabyConstants.BABY_GROWTH_CYCLE);
                     }
 
                     @Override
-                    public void onNext(BaseResponse<ResBabyBaseInfo> baseResponse) {
-                        listener.onSuccess(baseResponse, BabyConstants.BABY_INFO);
+                    public void onNext(BaseResponse<ResBabyGrowthCycle> baseResponse) {
+                        listener.onSuccess(baseResponse, BabyConstants.BABY_GROWTH_CYCLE);
                     }
                 });
     }
@@ -239,13 +231,13 @@ public Subscription pregnancyBabyChanges(int babyId,int week){
 
     /**
      * 根据宝宝成长状况获取推荐信息
-     *
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
-
+     * @param babyId       宝宝id
+     * @param currentStatus   当前状态
+     * @param requireStage    待请求阶段
+     * @param stageUnit    单位
      */
-    public Subscription recommendInfo(int babyStatus, int timeSpan) {
-        Observable<BaseResponse<ResRecommendInfo>> observable = babyAPI.recommendInfo(babyStatus,timeSpan);
+    public Subscription recommendInfo(int babyId,int currentStatus, String requireStage,String stageUnit) {
+        Observable<BaseResponse<ResRecommendInfo>> observable = babyAPI.recommendInfo(babyId,currentStatus,requireStage,stageUnit);
         return observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Subscriber<BaseResponse<ResRecommendInfo>>() {
@@ -266,35 +258,9 @@ public Subscription pregnancyBabyChanges(int babyId,int week){
                 });
 
     }
-    /**
-     * 更新单条推荐视频
-     *
-     * @param classifyId 视频分类id
-     * @param videoId 已看过视频id
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
 
-     */
-    public Subscription updateRecommend(String classifyId, long videoId, int babyStatus, int timeSpan){
-        Observable<BaseResponse<ResUpdateRecommend>> observable = babyAPI.updateRecommend(classifyId,videoId,babyStatus,timeSpan);
-        return observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResponse<ResUpdateRecommend>>() {
-                    @Override
-                    public void onCompleted() {
 
-                    }
 
-                    @Override
-                    public void onError(Throwable t) {
-                        listener.onFailed(t,BabyConstants.UPDATE_RECOMMEND);
-                    }
 
-                    @Override
-                    public void onNext(BaseResponse<ResUpdateRecommend> baseResponse) {
-                        listener.onSuccess(baseResponse, BabyConstants.UPDATE_RECOMMEND);
-                    }
-                });
 
-    }
 }

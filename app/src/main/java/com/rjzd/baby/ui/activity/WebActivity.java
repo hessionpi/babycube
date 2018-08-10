@@ -25,9 +25,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import com.orhanobut.logger.Logger;
 import com.rjzd.baby.R;
 import com.rjzd.baby.tools.NetWorkUtil;
+import com.rjzd.baby.ui.widget.dialog.ShareDialog;
+import com.umeng.socialize.ShareAction;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,6 +48,8 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
     ImageButton mBack;
     @BindView(R.id.title_name)
     TextView mTitleName;
+    @BindView(R.id.iv_right)
+    ImageView mRightImage;
     @BindView(R.id.web_pbar)
     ProgressBar webPbar;
 
@@ -63,6 +69,11 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
     private String mimeType;
     private String url;
     private String titleName;
+
+    private String title;
+    private String subTitle;
+    private String cover;
+
 //    private int userid;
     private static final String INTENT_KEY_DATA = "data";
     private static final String INTENT_KEY_MIME_TYPE = "mime_type";
@@ -72,18 +83,17 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
 //    private static final String USER_ID = "userid";
     private boolean isAnimStart = false;
     private int currentProgress;
-
     private boolean showWebViewTag = false;
-
-
-
-    public static void startActivity(Context context, String url) {
+    // 友盟社会化分享
+    private ShareAction mShareAction = new ShareAction(this);
+    public static void startActivity(Context context, String url,boolean showRight) {
         Logger.v("WebActivity:"+url);
         Intent i = new Intent();
         i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
         i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         i.setClass(context, WebActivity.class);
         i.putExtra(INTENT_KEY_REQUEST_URL, url);
+        i.putExtra("show_right",showRight);
         context.startActivity(i);
     }
 
@@ -111,7 +121,19 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
         i.putExtra(INTENT_KEY_ACTIVITY_TITLE_NAME, titleName);
         context.startActivity(i);
     }
-
+    public static void startActivity(Context context, String url,boolean showRight,String title,String subTitle,String cover) {
+        Logger.v("WebActivity:"+url);
+        Intent i = new Intent();
+        i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        i.setClass(context, WebActivity.class);
+        i.putExtra(INTENT_KEY_REQUEST_URL, url);
+        i.putExtra("show_right",showRight);
+        i.putExtra("title",title);
+        i.putExtra("subTitle",subTitle);
+        i.putExtra("cover",cover);
+        context.startActivity(i);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -123,7 +145,15 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
         initWebChromeClient();
     }
 
+    private void setRightVisible(){
+        mRightImage.setVisibility(View.VISIBLE);
+    }
+
     private void init() {
+        boolean showRight = getIntent().getBooleanExtra("show_right",false);
+        if(showRight){
+            setRightVisible();
+        }
         // 安全漏洞
         mWebView.removeJavascriptInterface("accessibility");
         mWebView.removeJavascriptInterface("accessibilityTraversal");
@@ -134,27 +164,26 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
         url = getIntent().getStringExtra(INTENT_KEY_REQUEST_URL);
         titleName = getIntent().getStringExtra(INTENT_KEY_ACTIVITY_TITLE_NAME);
 
-        //userid= getIntent().getIntExtra(USER_ID,0);
-       /* if (!TextUtils.isEmpty(titleName)) {
+        title = getIntent().getStringExtra("title");
+        subTitle = getIntent().getStringExtra("subTitle");
+        cover = getIntent().getStringExtra("cover");
+
+
+
+        if(!TextUtils.isEmpty(titleName)){
             mTitleName.setText(titleName);
-            if ("个人主页".equals(titleName)) {
-                titleShare.setVisibility(View.VISIBLE);
-                presenter = new UserPresenter(this);
+        }
 
-            }
-        }*/
-
-        mTitleName.setText(titleName);
         if (!TextUtils.isEmpty(url)) {
             mWebView.loadUrl(url);
         }
-
         if (!TextUtils.isEmpty(data)) {
             mWebView.loadDataWithBaseURL(null, data, mimeType, "utf-8", null);
         }
 
         mBack.setOnClickListener(this);
         reload.setOnClickListener(this);
+        mRightImage.setOnClickListener(this);
         //titleShare.setOnClickListener(this);
     }
 
@@ -290,7 +319,11 @@ public class WebActivity extends BaseActivity implements View.OnClickListener{
             case R.id.reload:
                 reloadWeb();
                 break;
+            case R.id.iv_right:
+                ShareDialog dialog = new ShareDialog();
+                dialog.showShareboard(this, mShareAction, ShareDialog.SHARE_IMAGE, url, title, subTitle, cover);
 
+                break;
         }
     }
 

@@ -77,8 +77,6 @@ public class SuperVideoPlayer extends RelativeLayout {
     private static MyHandler mHandler;
     private MyTimerTask timerTask;
 
-    public boolean playDone;
-
     /*private OnPlayInfoCallback mOnPlayInfoCallback;
     public void setVideoPlayInfoCallback(OnPlayInfoCallback callback) {
         mOnPlayInfoCallback = callback;
@@ -116,16 +114,14 @@ public class SuperVideoPlayer extends RelativeLayout {
     private OnTouchListener mOnTouchVideoListener = new OnTouchListener() {
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            if(!playDone){
-                int action = motionEvent.getAction();
-                if (action == MotionEvent.ACTION_DOWN) {
-                    showOrHideController(mContext);
-                    hideMoreView();
-                } else if (action == MotionEvent.ACTION_MOVE) {
+            int action = motionEvent.getAction();
+            if (action == MotionEvent.ACTION_DOWN) {
+                showOrHideController(mContext);
+                hideMoreView();
+            } else if (action == MotionEvent.ACTION_MOVE) {
 
-                } else if (action == MotionEvent.ACTION_UP) {
+            } else if (action == MotionEvent.ACTION_UP) {
 
-                }
             }
             return mCurrPageType == MediaController.PageType.EXPAND;
         }
@@ -144,9 +140,6 @@ public class SuperVideoPlayer extends RelativeLayout {
     }
 
     public void onPause() {
-        if(playDone){
-            return ;
-        }
         if (mDanmuView != null && mDanmuView.isPrepared()) {
             mDanmuView.pause();
         }
@@ -159,9 +152,6 @@ public class SuperVideoPlayer extends RelativeLayout {
     }
 
     public void onResume() {
-        if(playDone){
-            return ;
-        }
         if (mDanmuView != null && mDanmuView.isPrepared() && mDanmuView.isPaused()) {
             mDanmuView.resume();
         }
@@ -198,10 +188,10 @@ public class SuperVideoPlayer extends RelativeLayout {
         }
     }*/
 
-    public void setPlayUrl(String vodUrl) {
+    public int setPlayUrl(String vodUrl) {
         mTxplayer.stopPlay(true);
         mTxplayer.setAutoPlay(true);
-        int result = mTxplayer.startPlay(vodUrl); // result返回值：0 success;  -1 empty url;
+        return mTxplayer.startPlay(vodUrl); // result返回值：0 success;  -1 empty url;
     }
 
     /*public void addVodInfo(TXPlayerAuthParam param) {
@@ -308,13 +298,12 @@ public class SuperVideoPlayer extends RelativeLayout {
 
     private void onCompletion() {
         stopUpdateTimer();
-        stopHideTimer(false);
+        stopHideTimer(true);
         mMediaController.playFinish((int) (mTxplayer.getDuration() * 1000));
         mVideoPlayCallback.onPlayFinish();
         Toast.makeText(mContext, "视频播放完成", Toast.LENGTH_SHORT).show();
         mPhoneListener.stopListen();
     }
-
 
     public void setVideoPlayCallback(VideoPlayCallbackImpl videoPlayCallback) {
         mVideoPlayCallback = videoPlayCallback;
@@ -343,6 +332,7 @@ public class SuperVideoPlayer extends RelativeLayout {
         mTxplayer.pause();
         mMediaController.setPlayState(MediaController.PlayState.PAUSE);
         stopHideTimer(isShowController);
+        resetHideTimer();
     }
 
     /***
@@ -401,13 +391,13 @@ public class SuperVideoPlayer extends RelativeLayout {
         View.inflate(context, R.layout.super_vodeo_player_layout, this);
         mCloudVideoView =  findViewById(R.id.cloud_video_view);
         mMediaController = findViewById(R.id.controller);
-        mMediaController.setVisibility(View.GONE);
         mMediaToolbar =  findViewById(R.id.toolbar);
         mProgressBarView = findViewById(R.id.progressbar);
         mResolutionView =  findViewById(R.id.resolutionPanel);
         mMoreView = findViewById(R.id.morePanel);
         mDanmuView =  findViewById(R.id.danmaku_view);
 
+        mMediaController.setVisibility(View.GONE);
         mMediaController.setMediaControl(mMediaControl);
         mMediaToolbar.setMediaControl(mMediaControl);
         mCloudVideoView.setOnTouchListener(mOnTouchVideoListener);
@@ -454,7 +444,6 @@ public class SuperVideoPlayer extends RelativeLayout {
                 int playable = param.getInt(TXLiveConstants.EVT_PLAYABLE_DURATION_MS);
                 return;
             } else if (event == TXLiveConstants.PLAY_ERR_NET_DISCONNECT || event == TXLiveConstants.PLAY_EVT_PLAY_END || event == TXLiveConstants.PLAY_ERR_FILE_NOT_FOUND) {
-                playDone = true;
                 onCompletion();
             } else if (event == TXLiveConstants.PLAY_EVT_PLAY_LOADING) {
 
@@ -529,7 +518,7 @@ public class SuperVideoPlayer extends RelativeLayout {
 
     public void loadVideo() {
         if (null == mUpdateTimer) resetUpdateTimer();
-        resetHideTimer();
+//        resetHideTimer();
         mMediaController.setPlayState(MediaController.PlayState.PLAY);
     }
 
@@ -596,16 +585,10 @@ public class SuperVideoPlayer extends RelativeLayout {
             Animation animation = AnimationUtils.loadAnimation(context,R.anim.anim_enter_from_bottom);
             mMediaController.startAnimation(animation);
             resetHideTimer();
-            // 延迟3S 后关掉进度条
-            mHandler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mMediaController.setVisibility(View.GONE);
-
-                }
-            },3000);
         }
-        if (mMediaToolbar.getVisibility() == View.VISIBLE) {
+
+        // toolbar 需要一直显示
+        /*if (mMediaToolbar.getVisibility() == View.VISIBLE) {
             Animation animation = AnimationUtils.loadAnimation(context,
                     R.anim.anim_exit_from_top);
             animation.setAnimationListener(new AnimationImp() {
@@ -622,19 +605,19 @@ public class SuperVideoPlayer extends RelativeLayout {
             Animation animation = AnimationUtils.loadAnimation(context,
                     R.anim.anim_enter_from_top);
             mMediaToolbar.startAnimation(animation);
-        }
+        }*/
     }
 
     private void alwaysShowController() {
         mHandler.removeMessages(MSG_HIDE_CONTROLLER);
         mMediaController.setVisibility(View.VISIBLE);
-        mMediaToolbar.setVisibility(View.VISIBLE);
+//        mMediaToolbar.setVisibility(View.VISIBLE);
     }
 
     private void resetHideTimer() {
         if (!isAutoHideController()) return;
         mHandler.removeMessages(MSG_HIDE_CONTROLLER);
-        int TIME_SHOW_CONTROLLER = 4000;
+        int TIME_SHOW_CONTROLLER = 3000;
         mHandler.sendEmptyMessageDelayed(MSG_HIDE_CONTROLLER, TIME_SHOW_CONTROLLER);
     }
 

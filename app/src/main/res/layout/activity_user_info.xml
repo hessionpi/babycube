@@ -13,11 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:actionRightText="@string/save"
-        app:actionRightColor="@color/cl_primary"
-        app:background="@color/white"
-        app:actionLeftBackground="@drawable/ic_toolbar_back_black"
+        app:actionLeftBackground="@drawable/ic_toolbar_back"
         app:titleText="@string/userinfo"
-        app:titleColor="@color/cl_333333"
         >
     </com.rjzd.baby.ui.widget.ToolsbarView>
 

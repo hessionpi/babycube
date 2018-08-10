@@ -4,13 +4,9 @@ import com.rjzd.baby.BabyConstants;
 import com.rjzd.baby.api.VideoAPI;
 import com.rjzd.baby.entity.BaseResponse;
 import com.rjzd.baby.model.IListener;
-import com.zd.baby.api.model.ResAllOfVideos;
-import com.zd.baby.api.model.ResVideoClassify;
 import com.zd.baby.api.model.ResAllDiscuss;
 import com.zd.baby.api.model.ResSimilarVideos;
 import com.zd.baby.api.model.ResVideoDetails;
-import com.zd.baby.api.model.VideoFilter;
-
 import rx.Observable;
 import rx.Subscriber;
 import rx.Subscription;
@@ -31,60 +27,6 @@ public class VideoModel {
     public VideoModel(IListener listener) {
         this.listener = listener;
         videoAPI = new VideoAPI();
-    }
-
-    /**
-     * 获取视频分类
-     * @param status                      宝宝状态
-     */
-    public Subscription getVideoClassify(int status){
-        Observable<BaseResponse<ResVideoClassify>> observable = videoAPI.getVideoClassify(status);
-        return observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResponse>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        listener.onFailed(t, BabyConstants.VIDEO_VIDEOCLASSIFY);
-                    }
-
-                    @Override
-                    public void onNext(BaseResponse baseResponse) {
-                        listener.onSuccess(baseResponse, BabyConstants.VIDEO_VIDEOCLASSIFY);
-                    }
-                });
-    }
-
-    /**
-     * 根据条件筛选视频
-     * @param filter                    筛选条件
-     * @param pageNo                    当前页码
-     * @param pageSize                  分页尺寸
-     */
-    public Subscription getAllOfVideos(VideoFilter filter, int pageNo, int pageSize){
-        Observable<BaseResponse<ResAllOfVideos>> observable = videoAPI.getAllOfVideos(filter,pageNo,pageSize);
-        return observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<BaseResponse>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable t) {
-                        listener.onFailed(t, BabyConstants.VIDEO_ALLOFVIDEOS);
-                    }
-
-                    @Override
-                    public void onNext(BaseResponse baseResponse) {
-                        listener.onSuccess(baseResponse, BabyConstants.VIDEO_ALLOFVIDEOS);
-                    }
-                });
     }
 
     /**

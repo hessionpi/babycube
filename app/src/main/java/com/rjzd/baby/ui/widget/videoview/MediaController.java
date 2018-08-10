@@ -155,7 +155,7 @@ public class MediaController extends FrameLayout implements SeekBar.OnSeekBarCha
         mPlayImg.setOnClickListener(this);
         mResolutionTxt.setOnClickListener(this);
         mExpandImg.setOnClickListener(this);
-        setPageType(PageType.SHRINK);
+//        setPageType(PageType.SHRINK);
         setPlayState(PlayState.PAUSE);
 
         mResolutionTxt.setText(mTitleStrList.get(0));

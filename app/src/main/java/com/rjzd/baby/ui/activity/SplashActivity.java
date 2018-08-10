@@ -42,16 +42,12 @@ public class SplashActivity extends Activity {
         } else {
             //第二次进入
             LoginModel model = UserInfoCenter.getInstance().getLoginModel();
-            if (model == null) {
-                MemberActivity.startActivity(this);
-            } else {
-                if(model.isHasBaby()){
-                    // 如果有宝宝了，跳转去首页
-                    MainActivity.startActivity(this);
-                }else{
-                    // 如果没有宝宝就跳转至添加宝宝页
-                    AddBabyActivity.startActivity(this,true,false);
-                }
+            if(model != null && !model.isHasBaby()){
+                // 如果没有宝宝就跳转至首次添加宝宝页
+                AddBabyAfterFirstLoginActivity.startActivity(this,"splash");
+            }else{
+                // 如果有宝宝了，跳转去首页
+                MainActivity.startActivity(this);
             }
         }
         finish();

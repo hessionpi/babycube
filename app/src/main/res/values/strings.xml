@@ -11,7 +11,7 @@
     <string name="nav_menu_mybaby">我的宝宝</string>
     <string name="nav_menu_account_safe">账户安全</string>
     <string name="nav_menu_recommend">推荐给朋友</string>
-    <string name="nav_menu_comment">给个好评</string>
+    <string name="nav_menu_praise">给个好评</string>
     <string name="nav_menu_about_us">关于我们</string>
     <string name="nav_menu_logout">退出登录</string>
     <string name="tips_register_exit">是否退出注册？</string>
@@ -40,8 +40,8 @@
     <string name="child">幼儿</string>
 
     <string name="my_baby">我的宝宝</string>
-    <string name="add">添加</string>
-    <string name="change">修改</string>
+    <string name="add">添加宝宝</string>
+    <string name="change">修改宝宝信息</string>
     <string name="delete">删除</string>
     <string name="done">完成</string>
 
@@ -72,7 +72,8 @@
     <string name="no_network">当前无网络，请检查网络设置</string>
     <string name="reload">重新加载</string>
     <string name="choose_location">所在地区</string>
-
+    <string name="tools_ok">知道了</string>
+    <string name="msg">该工具正在开发测试中，敬请期待</string>
 
     <string name="userinfo">个人资料</string>
     <string name="change_headpic">修改头像</string>
@@ -87,32 +88,17 @@
 
 
     <string name="load_fail">加载失败，点击屏幕重新加载</string>
+    <string name="add_baby_photo">添加婴儿照片</string>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <string name="welcome">欢迎来到宝贝魔方</string>
+    <string name="login_by_mobile">手机号登录</string>
     <string name="login">登录</string>
     <string name="register">注册</string>
     <string name="other">其他方式</string>
     <string name="phone">手机</string>
     <string name="hint_phone">请输入手机号</string>
     <string name="password">密码</string>
-    <string name="hint_password">请输入密码</string>
+    <string name="hint_sms_code">请输入短信验证码</string>
     <string name="forget_password">忘记密码？</string>
     <string name="forget_pwd">忘记密码</string>
     <string name="find_password">点此找回</string>
@@ -120,10 +106,17 @@
     <string name="new_pwd">设置新密码</string>
     <string name="code">验证码</string>
     <string name="my_phone">您的手机号是？</string>
-    <string name="read">阅读并同意</string>
-    <string name="pact">“使用条款和隐私政策”</string>
+    <string name="read">登录代表您同意</string>
+    <string name="tips_continue_agree">继续表示您同意</string>
+    <string name="pact">宝贝魔方用户协议</string>
     <string name="next">下一步</string>
     <string name="my_code">收到短信验证码了吗？</string>
+
+    <string name="hint_nickname">请输入宝宝昵称</string>
+    <string name="hint_birthday">生日</string>
+    <string name="hint_sex_unknown">未知</string>
+
+    <string name="manage_baby">管理我的宝宝</string>
 
 
 </resources>

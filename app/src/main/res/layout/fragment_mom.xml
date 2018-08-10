@@ -28,7 +28,7 @@
                 android:layout_height="170dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/ic_default_baby_boy" />
+                android:src="@drawable/ic_default_prepar" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

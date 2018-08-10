@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingStart="30dp"
+    android:paddingEnd="30dp"
+    android:orientation="vertical"
+    android:background="@drawable/member_bg"
+    tools:context="com.rjzd.baby.ui.activity.LoginActivity"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="center_horizontal"
+        android:text="请选择宝宝的预产期或者生日"
+        android:textColor="@color/cl_primary"
+        android:textSize="@dimen/font_size_18" />
+
+    <!-- 宝宝生日 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_marginTop="41dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@drawable/shape_register_number"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_calendar"
+            />
+
+        <TextView
+            android:id="@+id/tv_baby_birthday"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="20dp"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textSize="@dimen/font_size_15"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_save"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/shape_save_bg"
+        android:textSize="@dimen/font_size_16"
+        android:textColor="@color/white"
+        android:text="@string/save"
+        />
+</LinearLayout>

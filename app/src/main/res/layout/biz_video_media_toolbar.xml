@@ -10,7 +10,9 @@
         android:layout_height="@dimen/media_controller_view_height"
         android:layout_gravity="center_vertical"
         android:background="@drawable/ic_vod_player_cover_top"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:visibility="gone"
+        >
 
         <ImageView
             android:id="@+id/back_pl"

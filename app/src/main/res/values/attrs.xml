@@ -54,5 +54,14 @@
         </attr>
     </declare-styleable>
 
+    <declare-styleable name="CircleView">
+        <attr name="android:thumb" />
+        <attr name="progress_width" format="dimension" />
+        <attr name="progress_background" format="color" />
+        <attr name="progress_color" format="color" />
+        <attr name="progress_max" format="integer" />
+        <attr name="scroll" format="boolean" />
+        <attr name="progress_num" format="integer" />
 
+    </declare-styleable>
 </resources>

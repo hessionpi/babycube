@@ -1,86 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="10dp"
-    android:paddingEnd="10dp"
-    android:background="@color/white"
-    tools:context=".ui.activity.MainActivity">
+    android:layout_marginEnd="10dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="5dp"
+    android:background="@drawable/shape_white_bg"
+    android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/iv_baby_avatar"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="8dp"
-        tools:src="@drawable/ic_default_baby_boy"
-        tools:ignore="ContentDescription"
-        />
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp">
 
+        <ImageView
+            android:id="@+id/iv_baby_status"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            tools:background="@drawable/ic_mybaby_pregancy" />
+
+        <ImageView
+            android:id="@+id/iv_baby_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="12dp"
+            android:src="@drawable/ic_baby_delete" />
+
+        <ImageView
+            android:id="@+id/iv_baby_photo"
+            android:layout_width="67dp"
+            android:layout_height="67dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="35dp"
+            tools:src="@drawable/ic_default_camera" />
+    </FrameLayout>
+
+
+    <!-- 昵称  -->
     <TextView
         android:id="@+id/tv_baby_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="12dp"
-        android:layout_alignTop="@id/iv_baby_avatar"
-        android:layout_toEndOf="@id/iv_baby_avatar"
-        android:textColor="@color/cl_2c2c2c"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:drawablePadding="20dp"
+        android:drawableStart="@drawable/ic_baby_add_name"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:textColor="@color/black"
         android:textSize="@dimen/font_size_15"
-        tools:text="天香宝宝"
-        />
-
-    <TextView
-        android:id="@+id/tv_baby_birthday"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@id/tv_baby_name"
-        android:layout_alignBottom="@id/iv_baby_avatar"
-        android:textColor="@color/cl_888888"
-        android:textSize="@dimen/font_size_14"
-        tools:text="宝宝生日：2018年5月4日"
-        />
+        tools:text="孙三立" />
 
     <View
-        android:id="@+id/dividing"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_marginTop="12dp"
-        android:layout_below="@+id/tv_baby_birthday"
-        android:background="@color/cl_dividing_line"
-        />
+        android:layout_height="1dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/cl_cccccc" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_below="@+id/dividing"
-        android:layout_alignParentEnd="true"
-        android:orientation="horizontal"
-        >
+    <!-- 生日  -->
+    <TextView
+        android:id="@+id/tv_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:drawablePadding="20dp"
+        android:drawableStart="@drawable/ic_baby_add_birthday"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_15"
+        tools:text="2018年10月15日" />
 
-        <TextView
-            android:id="@+id/tv_update_baby"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:drawableStart="@drawable/ic_baby_update"
-            android:drawablePadding="6dp"
-            android:textColor="@color/cl_999999"
-            android:textSize="@dimen/font_size_14"
-            android:text="@string/change"
-            />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:background="@color/cl_cccccc" />
 
-        <TextView
-            android:id="@+id/tv_update_delete"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:drawableStart="@drawable/ic_baby_delete"
-            android:drawablePadding="6dp"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/cl_999999"
-            android:textSize="@dimen/font_size_14"
-            android:text="@string/delete"
-            />
-    </LinearLayout>
-</RelativeLayout>
+    <!-- 性别  -->
+    <TextView
+        android:id="@+id/tv_sex"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:drawablePadding="20dp"
+        android:drawableStart="@drawable/ic_baby_add_sex"
+        android:gravity="center_vertical"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/font_size_15"
+        tools:text="男" />
+
+</LinearLayout>

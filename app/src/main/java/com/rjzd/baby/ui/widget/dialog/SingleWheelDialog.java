@@ -37,12 +37,14 @@ public class SingleWheelDialog extends DialogFragment {
         Bundle bundle = getArguments();
         String dialogTitle = bundle.getString("dialog_title");
         ArrayList<String> wheelValue = bundle.getStringArrayList("wheel_value");
+        int defPosition = bundle.getInt("default_position");
 
         TextView mTitle = mDialog.findViewById(R.id.tv_dialog_title);
         mTitle.setText(dialogTitle);
         // 自定义轮子View
         WheelView wv = mDialog.findViewById(R.id.wheel_view_single);
         wv.setItems(wheelValue);
+        wv.setSeletion(defPosition);
         itemValue = wv.getSeletedItem();
         Button mCancel = mDialog.findViewById(R.id.btn_cancel);
         Button mSure = mDialog.findViewById(R.id.btn_sure);

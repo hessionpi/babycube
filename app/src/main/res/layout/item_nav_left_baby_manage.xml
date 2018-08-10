@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingStart="31dp"
+    android:paddingEnd="10dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="5dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <!--备孕和宝宝-->
+    <ImageView
+        android:id="@+id/iv_baby_photo"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        tools:src="@drawable/ic_default_prepar"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_baby_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/font_size_14"
+            android:textColor="@color/black"
+            tools:text="小红帽"
+            />
+
+        <TextView
+            android:id="@+id/tv_baby_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textSize="@dimen/font_size_12"
+            android:textColor="@color/cl_666666"
+            tools:text="宝宝出生3个月了"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -47,7 +47,7 @@ public class BabyConstants {
     public static final String ACTION_DELETEBABY = "DeleteBaby";
     public static final String ACTION_BABY_CHANGE = "PregnancyBabyChanges";
     public static final String ACTION_MOM_CHANGE = "PregnancyMomChanges";
-    public static final String ACTION_BABY_INFO = "BabyBaseInfo";
+    public static final String ACTION_BABY_GROWTH_CYCLE = "BabyGrowthCycle";
     public static final String ACTION_RECOMMEND_INFO = "RecommendInfo";
     public static final String ACTION_UPDATE_RECOMMEND = "UpdateRecommend";
 
@@ -91,7 +91,7 @@ public class BabyConstants {
     public static final int BABY_MANAGE_DELETE = 403;
     public static final int BABY_CHANGE = 404;
     public static final int MOM_CHANGE = 405;
-    public static final int BABY_INFO = 405;
+    public static final int BABY_GROWTH_CYCLE = 405;
     public static final int RECOMMENDINFO_INFO = 406;
     public static final int UPDATE_RECOMMEND= 407;
     /************** it's end        **************************/

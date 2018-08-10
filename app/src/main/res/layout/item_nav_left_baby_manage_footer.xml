@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+
+    <!--备孕和宝宝-->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:paddingStart="31dp"
+        android:paddingEnd="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/manage_baby"
+        android:textSize="@dimen/font_size_16"
+        android:textColor="@color/black"
+        android:drawableStart="@drawable/ic_nav_manage_baby"
+        android:drawablePadding="30dp"
+         />
+
+</LinearLayout>

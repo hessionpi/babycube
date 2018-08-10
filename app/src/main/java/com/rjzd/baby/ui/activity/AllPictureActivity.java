@@ -22,6 +22,7 @@ import com.rjzd.baby.R;
 import com.rjzd.baby.entity.PictureBean;
 import com.rjzd.baby.model.UserInfoCenter;
 import com.rjzd.baby.tools.DensityUtil;
+import com.rjzd.baby.tools.ToastUtils;
 import com.rjzd.baby.tools.cos.CosUtil;
 import com.rjzd.baby.ui.adapter.AllPictureAdapter;
 import com.rjzd.baby.ui.adapter.recycleadapter.XMBaseAdapter;
@@ -162,24 +163,10 @@ public class AllPictureActivity extends BaseActivity {
                 // 裁剪图片
                 case CROP_BITMAP:
                     if (data != null) {
-                        // 先获取cos签名后上上传
-                        //  uploadPresenter.getCOSSign();
-                        CosUtil cosUtil = new CosUtil(this, new CosUtil.OnUploadListener() {
-                            @Override
-                            public void onSuccess(int code, String url) {
-                                Intent intent = new Intent(AllPictureActivity.this, UserinfoActivity.class);
-                                intent.putExtra("url", url);
-                                setResult(2, intent);//这里的2是我们的一个标记。也可以是随便的一个常数，只要和上面的一样就可以。
-                                //finish();
-                                finish();
-                            }
-
-                            @Override
-                            public void onFailed(int errorCode, String msg) {
-
-                            }
-                        });
-                        cosUtil.upload("user" + "/" + UserInfoCenter.getInstance().getUserId() + "/" + System.currentTimeMillis()+".jpg", photoOutputUri.getPath(), false);
+                        Intent intent = new Intent();
+                        intent.putExtra("src_path", photoOutputUri.getPath());
+                        setResult(200, intent);
+                        finish();
                     }
                     break;
             }

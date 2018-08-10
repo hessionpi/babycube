@@ -1,5 +1,6 @@
 package com.rjzd.baby.tools;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
@@ -67,4 +68,16 @@ public class DensityUtil {
     public static String formatFloat(float value) {
         return String.format(Locale.getDefault(), "%.3f", value);
     }
+
+    /**
+     * 获取手机像素密度
+     * @param activity Activity
+     * @return 手机香酥脆密度
+     */
+    public static float getensityDpi(Activity activity){
+        DisplayMetrics dm = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(dm);
+        return dm.densityDpi;
+    }
+
 }

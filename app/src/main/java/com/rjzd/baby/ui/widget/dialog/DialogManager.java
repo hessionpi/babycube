@@ -2,6 +2,7 @@ package com.rjzd.baby.ui.widget.dialog;
 
 import android.app.Activity;
 import android.os.Bundle;
+
 import java.util.ArrayList;
 
 /**
@@ -56,17 +57,28 @@ public class DialogManager {
         mSexDialog.setOnDialogListener(listener);
     }
 
+
+    public static void showDateDialog(Activity context, ArrayList<String> years, ArrayList<String> months,ArrayList<String> days,
+                                      OnDialogListener<String> listener){
+        showDateDialog(context,years,months,days,0,0,0,listener);
+    }
+
     /**
      * 时间选择对话框
      * @param context           Activity
      * @param listener          监听
      */
-    public static void showDateDialog(Activity context, ArrayList<String> years, ArrayList<String> months,ArrayList<String> days, OnDialogListener<String> listener){
+    public static void showDateDialog(Activity context, ArrayList<String> years, ArrayList<String> months,ArrayList<String> days,
+                                      int defYearPosition,int defMonthPosition,int defDayPosition,
+                                      OnDialogListener<String> listener){
         DateDialog mDateDialog = new DateDialog();
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("years",years);
         bundle.putStringArrayList("months",months);
         bundle.putStringArrayList("days",days);
+        bundle.putInt("default_year_position",defYearPosition);
+        bundle.putInt("default_month_position",defMonthPosition);
+        bundle.putInt("default_day_position",defDayPosition);
         mDateDialog.setArguments(bundle);
         mDateDialog.setCancelable(true);
         if (mDateDialog.isAdded()){
@@ -78,17 +90,22 @@ public class DialogManager {
         mDateDialog.setOnDialogListener(listener);
     }
 
+    public static void showSingleDialog(Activity context, String title,ArrayList<String> wheelValue,OnDialogListener<String> listener){
+        showSingleDialog(context,title,wheelValue,0,listener);
+    }
+
     /**
      * 带有单个轮子的dialog
      * @param context               Activity
      * @param wheelValue            轮子上面值的数组
      * @param listener              监听
      */
-    public static void showSingleDialog(Activity context, String title,ArrayList<String> wheelValue,OnDialogListener<String> listener){
+    public static void showSingleDialog(Activity context, String title,ArrayList<String> wheelValue,int defPosition,OnDialogListener<String> listener){
         SingleWheelDialog mDateDialog = new SingleWheelDialog();
         Bundle bundle = new Bundle();
         bundle.putString("dialog_title",title);
         bundle.putStringArrayList("wheel_value",wheelValue);
+        bundle.putInt("default_position",defPosition);
         mDateDialog.setArguments(bundle);
         mDateDialog.setCancelable(true);
         if (mDateDialog.isAdded()){
@@ -102,6 +119,25 @@ public class DialogManager {
 
 
 
+
+    public static void showToolsDialog(Activity context, int msgStringId, int okStringId
+            , UniversalDialogListener listener){
+
+            CommonDialogNoTitleWith1Button mCallTipsDialog = new CommonDialogNoTitleWith1Button();
+            Bundle bundle = new Bundle();
+            bundle.putString("title",context.getString(msgStringId));
+            bundle.putString("ok",context.getString(okStringId));
+            mCallTipsDialog.setArguments(bundle);
+
+            mCallTipsDialog.setCancelable(true);
+            if (mCallTipsDialog.isAdded()){
+                mCallTipsDialog.dismiss();
+            }else{
+                mCallTipsDialog.show(context.getFragmentManager(), "one_button_no_title");
+            }
+
+            mCallTipsDialog.setOnDialogListener(listener);
+        }
 
 
 

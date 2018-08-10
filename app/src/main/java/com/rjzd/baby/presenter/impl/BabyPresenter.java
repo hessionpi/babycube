@@ -1,7 +1,5 @@
 package com.rjzd.baby.presenter.impl;
 
-import com.rjzd.baby.entity.BaseResponse;
-import com.rjzd.baby.model.IListener;
 import com.rjzd.baby.model.imp.BabyModel;
 import com.rjzd.baby.view.IView;
 
@@ -11,13 +9,12 @@ import com.rjzd.baby.view.IView;
  * descriptions: 处理所有有关baby业务逻辑的Presenter
  */
 
-public class BabyPresenter extends BasePresenter implements IListener{
+public class BabyPresenter extends BasePresenter{
 
-    private IView mView;
     private BabyModel mModel;
 
     public BabyPresenter(IView view) {
-        this.mView = view;
+        super(view);
         this.mModel = new BabyModel(this);
     }
 
@@ -30,28 +27,21 @@ public class BabyPresenter extends BasePresenter implements IListener{
 
     /**
      * 添加宝宝
-     * @param babyStatus                    宝宝状态
-     * @param dueDate                       宝宝预产期
      * @param babySex                       宝宝性别
      * @param babyName                      宝宝姓名
      * @param babyBirthday                  宝宝生日
-     * @param lastMenstruation              末次月经开始时间
-     * @param duration                      月经持续天数
-     * @param circle                       月经周期
+     *
      */
-    public void addBaby(int babyStatus,String dueDate,int babySex,
-                           String babyName,String babyBirthday,String lastMenstruation,
-                           int duration,int circle) {
-        addSubscription(mModel.addBaby(babyStatus,dueDate,babySex,babyName,babyBirthday,lastMenstruation,duration,circle));
+    public void addBaby(int babySex,String babyName, String babyBirthday) {
+        addSubscription(mModel.addBaby(babySex,babyName,babyBirthday));
     }
 
     /**
      * 更新宝宝档案
      * @param babyId                    宝宝id
      */
-    public void updateBaby(int babyId,int babyStatus,String dueDate,int babySex,
-                           String babyName,String babyBirthday,String lastMenstruation,int duration) {
-        addSubscription(mModel.updateBaby(babyId,babyStatus,dueDate,babySex,babyName,babyBirthday,lastMenstruation,duration));
+    public void updateBaby(int babyId, int babySex, String babyName, String babyBirthday,String babyThumb) {
+        addSubscription(mModel.updateBaby(babyId,babySex,babyName,babyBirthday,babyThumb));
     }
 
     /**
@@ -84,34 +74,19 @@ public class BabyPresenter extends BasePresenter implements IListener{
 
      * @param babyId            宝宝id
      */
-    public void babyBaseInfo(int babyId){addSubscription(mModel.babyBaseInfo(babyId));}
+    public void babyGrowthCycle(int babyId){addSubscription(mModel.babyGrowthCycle(babyId));}
 
     /**
      * 根据宝宝成长状况获取推荐信息
-     *
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
-
+     * @param babyId       宝宝id
+     * @param currentStatus   当前状态
+     * @param requireStage    待请求阶段
+     * @param stageUnit    单位
      */
-    public void recommendInfo(int babyStatus, int timeSpan){addSubscription(mModel.recommendInfo(babyStatus,timeSpan));}
-
-    /**
-     * 更新单条推荐视频
-     *
-     * @param classifyId 视频分类id
-     * @param videoId 已看过视频id
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
-
-     */
-    public void updateRecommend(String classifyId, long videoId, int babyStatus, int timeSpan){addSubscription(mModel.updateRecommend(classifyId,videoId,babyStatus,timeSpan));}
-    @Override
-    public void onSuccess(BaseResponse data, int flag) {
-        mView.onComplete(data,flag);
+    public void recommendInfo(int babyId,int currentStatus, String requireStage,String stageUnit){
+        addSubscription(mModel.recommendInfo(babyId,currentStatus,requireStage,stageUnit));
     }
 
-    @Override
-    public void onFailed(Throwable e, int flag) {
-        mView.onFailShow(flag);
-    }
+
+
 }

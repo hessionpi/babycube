@@ -1,447 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".ui.activity.VideoPlayActivity">
 
-
-    <FrameLayout
-        android:id="@+id/layout_player"
+    <com.rjzd.baby.ui.widget.videoview.SuperVideoPlayer
+        android:id="@+id/video_player_view"
         android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <ImageView
+        android:id="@+id/iv_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:minHeight="193dp"
-        android:background="@color/black"
-        >
-
-        <ImageView
-            android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:src="@drawable/ic_toolbar_back_shadow"
-            tools:ignore="ContentDescription"
-            />
-
-        <com.rjzd.baby.ui.widget.videoview.SuperVideoPlayer
-            android:id="@+id/video_player_view"
-            android:layout_width="match_parent"
-            android:layout_height="193dp"
-            android:visibility="gone"
-            />
-
-        <!-- 加载loading -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            >
-
-            <ProgressBar
-                android:id="@+id/pb_play_loading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:indeterminateDrawable="@drawable/play_loading" />
-
-            <TextView
-                android:id="@+id/tv_tips_failed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/load_failed"
-                android:textSize="@dimen/font_size_15"
-                android:textColor="@color/white"
-                android:visibility="gone"
-                />
-
-            <TextView
-                android:id="@+id/tv_reload"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/load_again"
-                android:textSize="@dimen/font_size_15"
-                android:textColor="@color/white"
-                android:background="@drawable/shape_play_continue_bg"
-                android:visibility="gone"
-                />
-        </LinearLayout>
-
-
-
-        <!-- 非wifi情况下提示流量消耗 -->
-        <LinearLayout
-            android:id="@+id/ll_play_cost_flow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone"
-            >
-
-            <TextView
-                android:id="@+id/tv_tips_play_cost_flow"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/tips_play_with4g"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_size_15"
-                />
-
-            <Button
-                android:id="@+id/btn_play_continue"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginTop="15dp"
-                android:text="@string/play_continue"
-                android:textColor="@color/white"
-                android:textSize="@dimen/font_size_15"
-                android:background="@drawable/shape_play_continue_bg"
-                />
-        </LinearLayout>
-
-        <!-- 播放结束分享 -->
-        <LinearLayout
-            android:id="@+id/ll_play_done_share"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="vertical"
-            android:visibility="gone"
-            >
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                >
-
-                <View
-                    android:layout_width="35dp"
-                    android:layout_height="1dp"
-                    android:background="@color/cl_999999"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="10dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_size_13"
-                    android:text="@string/share_to"
-                    />
-
-                <View
-                    android:layout_width="35dp"
-                    android:layout_height="1dp"
-                    android:background="@color/cl_999999"
-                    />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/tv_wx_circle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:drawableTop="@drawable/ic_play_done_wx_circle"
-                    android:drawablePadding="10dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_size_12"
-                    android:text="@string/wx_circle"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_wx"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:padding="15dp"
-                    android:layout_marginStart="15dp"
-                    android:drawableTop="@drawable/ic_play_done_wx"
-                    android:drawablePadding="10dp"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/font_size_12"
-                    android:text="@string/wx_friend"
-                    />
-            </LinearLayout>
-
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_play_again"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="12dp"
-            android:layout_gravity="bottom|start"
-            android:drawableStart="@drawable/ic_play_again"
-            android:drawablePadding="8dp"
-            android:textSize="@dimen/font_size_13"
-            android:textColor="@color/white"
-            android:text="@string/play_again"
-            android:visibility="gone"
-            />
-
-    </FrameLayout>
-
-    <ScrollView
-        android:id="@+id/scrollView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/layout_player"
-        android:layout_above="@+id/btn_publish_comments"
-        android:overScrollMode="never"
-        android:scrollbars="none"
-        >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:paddingBottom="10dp"
-            android:orientation="vertical"
-            >
-
-            <TextView
-                android:id="@+id/tv_video_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                tools:text="而开发和人家客服和人家客户疯女人看能"
-                android:textColor="@color/cl_333333"
-                android:textSize="@dimen/font_size_16"
-                />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                >
-
-                <TextView
-                    android:id="@+id/tv_classfy"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/font_size_12"
-                    android:textColor="@color/cl_999999"
-                    tools:text="视频分类"
-                    />
-
-                <View
-                    android:layout_width="1dp"
-                    android:layout_height="12dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:background="@color/cl_999999"
-                    />
-
-                <TextView
-                    android:id="@+id/tv_see_object"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/font_size_12"
-                    android:textColor="@color/cl_999999"
-                    tools:text="适合妈妈们观看要"
-                    />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_video_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textSize="@dimen/font_size_13"
-                android:textColor="@color/cl_333333"
-                tools:text="而开发和乳房而开发和乳房和个人看过你入坑人工美女人体人，如果没人，而我关天人命，给你， 如果木头人，干嘛呢条人命，你 个年头让美女，让你哥那天没人你牛头人干嘛呢没惹你吗你"
-                />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                android:layout_marginTop="12dp"
-                android:layout_gravity="end"
-                >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:textSize="@dimen/font_size_11"
-                    android:textColor="@color/cl_999999"
-                    android:text="@string/share_to"
-                    />
-                
-                <ImageView
-                    android:id="@+id/iv_wx_circle"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@drawable/ic_share_wx_circle"
-                    tools:ignore="ContentDescription"
-                    />
-
-                <ImageView
-                    android:id="@+id/iv_wx_friends"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:layout_marginStart="15dp"
-                    android:src="@drawable/ic_share_wx_friends"
-                    tools:ignore="ContentDescription"
-                    />
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="8dp"
-                android:background="@color/cl_dividing_line"
-                />
-
-            <!-- 相似视频 -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginTop="15dp"
-                    android:orientation="horizontal"
-                    >
-
-                    <View
-                        android:layout_width="2dp"
-                        android:layout_height="15dp"
-                        android:background="@color/cl_primary"
-                        />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="7dp"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/font_size_14"
-                        android:textColor="@color/cl_333333"
-                        android:text="@string/maybe_like"
-                        />
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <android.support.v7.widget.RecyclerView
-                        android:id="@+id/rv_video_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginBottom="10dp"
-                        android:overScrollMode="never"
-                        tools:listitem="@layout/item_new_vod"
-                        />
-                </RelativeLayout>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/cl_dividing_line"
-                />
-
-            <!-- 评论 -->
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                >
-
-                <View
-                    android:layout_width="2dp"
-                    android:layout_height="15dp"
-                    android:background="@color/cl_primary"
-                    />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="7dp"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/font_size_14"
-                    android:textColor="@color/cl_333333"
-                    android:text="全部评论"
-                    />
-            </LinearLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_discuss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:listitem="@layout/item_discuss"
-                    android:overScrollMode="never"
-                    >
-                </android.support.v7.widget.RecyclerView>
-
-                <TextView
-                    android:id="@+id/tv_discuss_empty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginBottom="27dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_gravity="center"
-                    android:drawableTop="@drawable/ic_discuss_empty"
-                    android:drawablePadding="10dp"
-                    android:text="@string/tips_discuss_empty"
-                    android:textColor="@color/cl_999999"
-                    android:textSize="@dimen/font_size_12"
-                    android:visibility="gone"
-                    />
-            </RelativeLayout>
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <Button
-        android:id="@+id/btn_publish_comments"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="200dp"
-        android:layout_height="34dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@drawable/shape_publish_comment_bg"
-        android:text="发表评论"
-        android:textSize="@dimen/font_size_13"
-        android:textColor="@color/cl_2a7f8e"
+        android:padding="20dp"
+        android:src="@drawable/ic_toolbar_back"
         />
 
-</RelativeLayout>
+    <!-- 加载loading -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/pb_play_loading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:indeterminateDrawable="@drawable/play_loading" />
+
+        <TextView
+            android:id="@+id/tv_tips_failed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/load_failed"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_15"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shape_play_continue_bg"
+            android:text="@string/load_again"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_15"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- 非wifi情况下提示流量消耗 -->
+    <LinearLayout
+        android:id="@+id/ll_play_cost_flow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_tips_play_cost_flow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tips_play_with4g"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_15" />
+
+        <Button
+            android:id="@+id/btn_play_continue"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/shape_play_continue_bg"
+            android:text="@string/play_continue"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_15" />
+    </LinearLayout>
+
+</FrameLayout>

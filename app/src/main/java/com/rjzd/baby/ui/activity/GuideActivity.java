@@ -93,11 +93,7 @@ public class GuideActivity extends AppCompatActivity implements View.OnClickList
         LoginModel model = UserInfoCenter.getInstance().getLoginModel();
         switch (v.getId()) {
             case R.id.tv_skip:
-                if (model == null) {
-                    MemberActivity.startActivity(this);
-                } else {
-                    MainActivity.startActivity(this);
-                }
+                MainActivity.startActivity(this);
                 finish();
                 break;
         }

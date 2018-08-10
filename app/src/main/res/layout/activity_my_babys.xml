@@ -14,17 +14,88 @@
         android:layout_height="wrap_content"
         app:actionLeftBackground="@drawable/ic_toolbar_back"
         app:titleText="@string/my_baby"
-        app:actionRightText="@string/add"
+        app:actionRightBackground="@drawable/ic_toolbar_add"
         >
     </com.rjzd.baby.ui.widget.ToolsbarView>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_mybabys"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:overScrollMode="never"
-        tools:listitem="@layout/recycle_item_mybaby"
         >
-    </android.support.v7.widget.RecyclerView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/tv_pregnancy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="53dp"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/font_size_17"
+                    android:textColor="@color/cl_666666"
+                    android:text="怀孕"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_mybaby_pregnancy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_pregnancy"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/recycle_item_mybaby"
+                    tools:itemCount="2"
+                    >
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+            <!--出生的宝宝 -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <TextView
+                    android:id="@+id/tv_babies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="53dp"
+                    android:layout_alignParentTop="true"
+                    android:gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:textSize="@dimen/font_size_17"
+                    android:textColor="@color/cl_666666"
+                    android:text="宝宝"
+                    />
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_mybabies"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_babies"
+                    android:overScrollMode="never"
+                    tools:listitem="@layout/recycle_item_mybaby"
+                    tools:itemCount="3"
+                    >
+                </android.support.v7.widget.RecyclerView>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+
+
+
 
 </LinearLayout>

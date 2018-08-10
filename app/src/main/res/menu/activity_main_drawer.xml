@@ -21,28 +21,13 @@
         <item
             android:id="@+id/nav_praise"
             android:icon="@drawable/ic_nav_menu_praise"
-            android:title="@string/nav_menu_comment" />
+            android:title="@string/nav_menu_praise" />
         <item
             android:id="@+id/nav_about_us"
             android:icon="@drawable/ic_nav_menu_about_us"
             android:title="@string/nav_menu_about_us" />
-        <item
-            android:icon="@null"
-            android:title="" />
-        <item
-            android:icon="@null"
-            android:title="" />
     </group>
 
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="none"
-        >
-        <item
-            android:id="@+id/logout"
-            android:icon="@drawable/ic_nav_menu_logout"
-            android:title="@string/nav_menu_logout" />
-    </group>
 
     <!--<item android:title="">
         <menu>

@@ -1,10 +1,9 @@
 package com.rjzd.baby.presenter.impl;
 
-import com.rjzd.baby.entity.BaseResponse;
+
 import com.rjzd.baby.model.IListener;
 import com.rjzd.baby.model.imp.VideoModel;
 import com.rjzd.baby.view.IView;
-import com.zd.baby.api.model.VideoFilter;
 
 /**
  * create time: 2018/6/12  18:06
@@ -13,20 +12,11 @@ import com.zd.baby.api.model.VideoFilter;
  */
 
 public class VideoPresenter extends BasePresenter implements IListener {
-    private IView mView;
     private VideoModel mModel;
 
     public VideoPresenter(IView mView){
-        this.mView = mView;
+        super(mView);
         this.mModel = new VideoModel(this);
-    }
-
-    public void getVideoClassify(int status){
-        addSubscription(mModel.getVideoClassify(status));
-    }
-
-    public void getAllOfVideos(VideoFilter filter, int pageNo, int pageSize){
-        addSubscription(mModel.getAllOfVideos(filter,pageNo,pageSize));
     }
 
     public void getVideoDetails(long videoId){
@@ -45,13 +35,4 @@ public class VideoPresenter extends BasePresenter implements IListener {
         addSubscription(mModel.publishDiscuss(videoId,contents));
     }
 
-    @Override
-    public void onSuccess(BaseResponse data, int flag) {
-        mView.onComplete(data,flag);
-    }
-
-    @Override
-    public void onFailed(Throwable e, int flag) {
-        mView.onFailShow(flag);
-    }
 }

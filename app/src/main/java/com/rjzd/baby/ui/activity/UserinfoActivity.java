@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.rjzd.baby.R;
+import com.rjzd.baby.api.ExceptionHandler;
 import com.rjzd.baby.entity.BaseResponse;
 import com.rjzd.baby.entity.Province;
 import com.rjzd.baby.model.LoginModel;
@@ -22,6 +24,7 @@ import com.rjzd.baby.model.UserInfoCenter;
 import com.rjzd.baby.presenter.impl.UserPresenter;
 import com.rjzd.baby.tools.ToastUtils;
 import com.rjzd.baby.tools.ZDUtils;
+import com.rjzd.baby.tools.cos.CosUtil;
 import com.rjzd.baby.ui.tools.imgloader.ImageLoader;
 import com.rjzd.baby.ui.widget.ToolsbarView;
 import com.rjzd.baby.ui.widget.dialog.DialogManager;
@@ -128,7 +131,7 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
         birthYearArray = new ArrayList<>();
         birthDayArray = new ArrayList<>();
 
-        for(int h=57;h<281;h++){
+        for(int h=120;h<281;h++){
             hightArray.add(h+"cm");
         }
         for(int w=30;w<200;w++){
@@ -196,7 +199,7 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
 
 
         if(null != userInfo){
-            request.setHeadPic(userInfo.getHeadpicThumb());
+            request.setHeadPic(userInfo.getHeadpic());
             request.setNickname(userInfo.getNickname());
             String province = userInfo.getProvince();
             String city = userInfo.getCity();
@@ -280,8 +283,7 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
             case R.id.tv_change_head_pic:
                 // 跳转到选择照片
                 if (checkPermission()) {
-                    Intent intent = new Intent(this, AllPictureActivity.class);
-                    startActivityForResult(intent,0);
+                    choosePhotos();
                 }
 
                 break;
@@ -312,7 +314,7 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
 
             case R.id.tv_hight:
                 // 修改身高
-                DialogManager.showSingleDialog(this,getString(R.string.hight),hightArray, new OnDialogListener<String>() {
+                DialogManager.showSingleDialog(this,getString(R.string.hight),hightArray,45, new OnDialogListener<String>() {
                     @Override
                     public void onNegative() {
 
@@ -332,7 +334,7 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
 
             case R.id.tv_weight:
                 // 修改体重
-                DialogManager.showSingleDialog(this,getString(R.string.weight), wightArray, new OnDialogListener<String>() {
+                DialogManager.showSingleDialog(this,getString(R.string.weight), wightArray,20, new OnDialogListener<String>() {
                     @Override
                     public void onNegative() {
 
@@ -352,7 +354,8 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
 
             case R.id.tv_birthday:
                 // 修改生日
-                DialogManager.showDateDialog(this, birthYearArray, null,birthDayArray, new OnDialogListener<String>() {
+                DialogManager.showDateDialog(this, birthYearArray, null,birthDayArray,
+                        62,0,0, new OnDialogListener<String>() {
                     @Override
                     public void onNegative() {
 
@@ -360,14 +363,16 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
 
                     @Override
                     public void onPositive(String... args) {
-                        isNeedChange = true;
-                        String birthdayYear = args[0];
-                        String birthdayMonth = args[1];
-                        String birthdayDay = args[2];
-                        String birthday = birthdayYear+"年"+birthdayMonth+"月"+birthdayDay+"日";
-                        // 调用接口修改生日
-                        request.setBirthday(birthdayYear+"-"+birthdayMonth+"-"+birthdayDay);
-                        tvBirthday.setText(birthday);
+                        if(args.length>=3){
+                            isNeedChange = true;
+                            String birthdayYear = args[0];
+                            String birthdayMonth = args[1];
+                            String birthdayDay = args[2];
+                            String birthday = birthdayYear+"年"+birthdayMonth+"月"+birthdayDay+"日";
+                            // 调用接口修改生日
+                            request.setBirthday(birthdayYear+"-"+birthdayMonth+"-"+birthdayDay);
+                            tvBirthday.setText(birthday);
+                        }
                     }
                 });
                 break;
@@ -413,8 +418,8 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
     }
 
     @Override
-    public void onFailShow(int flag) {
-
+    public void onFailShow(int errorCode) {
+        ExceptionHandler.handleException(this,errorCode);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -428,35 +433,50 @@ public class UserinfoActivity extends BaseActivity implements View.OnClickListen
             tvLocation.setText(provinceName+" "+cityName);
         }
     }
-  /*  private class UploadListener implements CosUtil.OnUploadListener {
 
-        @Override
-        public void onSuccess(int code, String url) {
-            Log.e("hition==", url);
-         *//*   httpUrl = url;
+    private void choosePhotos(){
+        Intent intent = new Intent(this, AllPictureActivity.class);
+        startActivityForResult(intent,0);
+    }
 
-            if (isDefault) {
-                presenter.updateUserinfo(httpUrl, nickName, sex,null,null);
-            } else {
-                ImageLoader.loadTransformImage(getApplicationContext(), url, R.drawable.icon_man_head_circle, R.drawable.icon_man_head_circle, ivCamera, 0);
-            }*//*
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case 100:
+                for (int i=0;i < grantResults.length;i++) {
+                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                        return;
+                    }
+                }
+                choosePhotos();
+                break;
         }
-
-        @Override
-        public void onFailed(int errorCode, String msg) {
-            // 头像上传COS失败
-            Log.e("hition==", msg + errorCode);
-        }
-    }*/
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == 2) {
-            // 通过返回码判断是哪个应用返回的数据
-            String url="http://" +data.getStringExtra("url");
-            ImageLoader.loadTransformImage(UserinfoActivity.this,url,ivHeadpic,0);
-            request.setHeadPic(url);
-            isNeedChange = true;
+        if (resultCode == 200) {
+            String srcPath = data.getStringExtra("src_path");
+            if(TextUtils.isEmpty(srcPath)){
+                return ;
+            }
+
+            CosUtil cosUtil = new CosUtil(this, new CosUtil.OnUploadListener() {
+                @Override
+                public void onSuccess(int code, String url) {
+                    String headPicUrl="http://" +url;
+                    ImageLoader.loadTransformImage(UserinfoActivity.this,headPicUrl,ivHeadpic,0);
+                    request.setHeadPic(headPicUrl);
+                    isNeedChange = true;
+                }
+
+                @Override
+                public void onFailed(int errorCode, String msg) {
+                    ToastUtils.show(UserinfoActivity.this,"上传失败……");
+                }
+            });
+            cosUtil.upload("user" + "/" + UserInfoCenter.getInstance().getUserId() + "/" + System.currentTimeMillis()+".jpg", srcPath, false);
         }
     }
     @Override

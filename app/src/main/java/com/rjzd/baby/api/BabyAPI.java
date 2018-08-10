@@ -5,19 +5,18 @@ import com.rjzd.baby.BabyConstants;
 import com.rjzd.baby.entity.BaseResponse;
 import com.zd.baby.api.model.ReqAddBaby;
 import com.zd.baby.api.model.ReqAllBaby;
-import com.zd.baby.api.model.ReqBabyBaseInfo;
+import com.zd.baby.api.model.ReqBabyGrowthCycle;
 import com.zd.baby.api.model.ReqChangeBaby;
 import com.zd.baby.api.model.ReqDeleteBaby;
 import com.zd.baby.api.model.ReqPregnancyBabyChanges;
 import com.zd.baby.api.model.ReqPregnancyMomChanges;
 import com.zd.baby.api.model.ReqRecommendInfo;
-import com.zd.baby.api.model.ReqUpdateRecommend;
+import com.zd.baby.api.model.ResAddBaby;
 import com.zd.baby.api.model.ResAllBaby;
-import com.zd.baby.api.model.ResBabyBaseInfo;
+import com.zd.baby.api.model.ResBabyGrowthCycle;
 import com.zd.baby.api.model.ResPregnancyBabyChanges;
 import com.zd.baby.api.model.ResPregnancyMomChanges;
 import com.zd.baby.api.model.ResRecommendInfo;
-import com.zd.baby.api.model.ResUpdateRecommend;
 
 import okhttp3.RequestBody;
 import rx.Observable;
@@ -53,27 +52,17 @@ public class BabyAPI {
     /**
      * 添加 baby
      *
-     * @param babyStatus       宝宝状态
-     * @param dueDate          预产期
      * @param babySex          宝宝性别
      * @param babyName         宝宝姓名
      * @param babyBirthday     宝宝生日
-     * @param lastMenstruation 末次月经开始时间
-     * @param duration         月经持续时间
      */
-    public Observable<BaseResponse> addBaby(int babyStatus, String dueDate, int babySex,
-                                            String babyName, String babyBirthday, String lastMenstruation, int duration,int circle) {
+    public Observable<BaseResponse<ResAddBaby>> addBaby(int babySex, String babyName, String babyBirthday) {
         ReqAddBaby req = new ReqAddBaby();
         req.setHeader(APIManager.getInstance().putHeaderByReq(null));
         req.setAction(BabyConstants.ACTION_ADDBABY);
-        req.setBabyStatus(babyStatus);
-        req.setDueDate(dueDate);
         req.setBabySex(babySex);
         req.setBabyName(babyName);
         req.setBabyBirthday(babyBirthday);
-        req.setLastMenstruation(lastMenstruation);
-        req.setDuration(duration);
-        req.setMenstruationCycle(circle);
 
         Gson gson = new Gson();
         String content = gson.toJson(req);
@@ -85,27 +74,20 @@ public class BabyAPI {
      * 更新宝宝信息
      *
      * @param babyId           宝宝id
-     * @param babyStatus       宝宝状态
-     * @param dueDate          预产期
      * @param babySex          宝宝性别
      * @param babyName         宝宝姓名
      * @param babyBirthday     宝宝生日
-     * @param lastMenstruation 末次月经开始时间
-     * @param duration         月经持续时间
+     * @param babyThumb        宝宝头像缩略图
      */
-    public Observable<BaseResponse> updateBaby(int babyId, int babyStatus, String dueDate, int babySex,
-                                               String babyName, String babyBirthday, String lastMenstruation, int duration) {
+    public Observable<BaseResponse> updateBaby(int babyId, int babySex, String babyName, String babyBirthday,String babyThumb) {
         ReqChangeBaby req = new ReqChangeBaby();
         req.setHeader(APIManager.getInstance().putHeaderByReq(null));
         req.setAction(BabyConstants.ACTION_CHANGEBABY);
         req.setBabyId(babyId);
-        req.setBabyStatus(babyStatus);
-        req.setDueDate(dueDate);
         req.setBabySex(babySex);
         req.setBabyName(babyName);
         req.setBabyBirthday(babyBirthday);
-        req.setLastMenstruation(lastMenstruation);
-        req.setDuration(duration);
+        req.setBabyThumb(babyThumb);
 
         Gson gson = new Gson();
         String content = gson.toJson(req);
@@ -172,64 +154,45 @@ public class BabyAPI {
      * @param babyId 宝宝id
 
      */
-    public Observable<BaseResponse<ResBabyBaseInfo>> babyBaseInfo(int babyId) {
-        ReqBabyBaseInfo req = new ReqBabyBaseInfo();
+    public Observable<BaseResponse<ResBabyGrowthCycle>> babyGrowthCycle(int babyId) {
+        ReqBabyGrowthCycle req = new ReqBabyGrowthCycle();
         req.setHeader(APIManager.getInstance().putHeaderByReq(null));
-        req.setAction(BabyConstants.ACTION_BABY_INFO);
+        req.setAction(BabyConstants.ACTION_BABY_GROWTH_CYCLE);
         req.setBabyId(babyId);
 
 
         Gson gson = new Gson();
         String content = gson.toJson(req);
         RequestBody requestBody = RequestBody.create(APIManager.CONTENT_TYPE, content);
-        return service.babyBaseInfo(requestBody);
+        return service.babyGrowthCycle(requestBody);
     }
-
-
 
     /**
      * 根据宝宝成长状况获取推荐信息
-     *
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
-
+     * @param babyId       宝宝id
+     * @param currentStatus   当前状态
+     * @param requireStage    待请求阶段
+     * @param stageUnit    单位
      */
-    public Observable<BaseResponse<ResRecommendInfo>> recommendInfo(int babyStatus, int timeSpan) {
+    public Observable<BaseResponse<ResRecommendInfo>> recommendInfo(int babyId,int currentStatus, String requireStage,String stageUnit) {
         ReqRecommendInfo req = new ReqRecommendInfo();
         req.setHeader(APIManager.getInstance().putHeaderByReq(null));
         req.setAction(BabyConstants.ACTION_RECOMMEND_INFO);
-        req.setBabyStatus(babyStatus);
-        req.setTimeSpan(timeSpan);
-
+        req.setBabyId(babyId);
+        req.setCurrentStatus(currentStatus);
+        req.setRequireStage(requireStage);
+        req.setStageUnit(stageUnit);
 
         Gson gson = new Gson();
         String content = gson.toJson(req);
         RequestBody requestBody = RequestBody.create(APIManager.CONTENT_TYPE, content);
         return service.recommendInfo(requestBody);
     }
-    /**
-     * 更新单条推荐视频
-     *
-     * @param classifyId 视频分类id
-     * @param videoId 已看过视频id
-     * @param babyStatus 宝宝状态
-     * @param timeSpan 时间跨度
-
-     */
-    public Observable<BaseResponse<ResUpdateRecommend>> updateRecommend(String classifyId, long videoId, int babyStatus, int timeSpan) {
-        ReqUpdateRecommend req = new ReqUpdateRecommend();
-        req.setHeader(APIManager.getInstance().putHeaderByReq(null));
-        req.setAction(BabyConstants.ACTION_UPDATE_RECOMMEND);
-        req.setClassifyId(classifyId);
-        req.setVideoId(videoId);
-        req.setBabyStatus(babyStatus);
-        req.setTimeSpan(timeSpan);
 
 
-        Gson gson = new Gson();
-        String content = gson.toJson(req);
-        RequestBody requestBody = RequestBody.create(APIManager.CONTENT_TYPE, content);
-        return service.updateRecommend(requestBody);
-    }
+
+
+
+
 
 }

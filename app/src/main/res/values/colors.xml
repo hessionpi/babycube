@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">@color/cl_primary</color>
     <color name="colorPrimaryDark">@color/cl_primary</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">@color/cl_primary</color>
 
     <color name="cl_primary">#2cacc0</color>
     <color name="cl_primary_background">#f5f5f5</color>
@@ -57,6 +57,20 @@
     <color name="cl_c5c5c5">#c5c5c5</color>
     <color name="cl_e5e5e5">#e5e5e5</color>
     <color name="cl_555555">#555555</color>
+    <color name="cl_f4f4f4">#f4f4f4</color>
+    <color name="cl_d6d7c9">#d6d7c9</color>
+    <color name="cl_e5e6e1">#e5e6e1</color>
+    <color name="cl_f3aa15">#f3aa15</color>
+    <color name="cl_707070">#707070</color>
+    <color name="cl_c7c7cd">#c7c7cd</color>
+    <color name="cl_dfdfcd">#dfdfcd</color>
+    <color name="cl_656565">#656565</color>
+    <color name="cl_295b62">#295b62</color>
 
+    <color name="cl_bdbdbd">#bdbdbd</color>
+    <color name="cl_2e2e2e">#2e2e2e</color>
+    <color name="cl_93ba43">#93ba43</color>
+    <color name="cl_92b944">#92b944</color>
+    <color name="cl_bababa">#bababa</color>
 
 </resources>

@@ -6,9 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="start"
     tools:context=".ui.activity.MainActivity"
-    >
+    tools:openDrawer="start">
 
     <include
         layout="@layout/app_bar_main"
@@ -21,10 +20,73 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/activity_main_drawer"
-        app:theme="@style/MenuTextStyle"
-        app:itemIconTint="@color/cl_primary"
-        />
+        app:headerLayout="@layout/nav_header_main">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/nav_header_height"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_above="@+id/ll_menu_bottom"
+                tools:listitem="@layout/item_drawer_menu"
+                android:overScrollMode="never"
+                >
+
+            </android.support.v7.widget.RecyclerView>
+
+            <LinearLayout
+                android:id="@+id/ll_menu_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:orientation="vertical"
+                >
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.8dp"
+                    android:layout_alignParentBottom="true"
+                    android:background="@color/cl_dividing_line" />
+
+                <TextView
+                    android:id="@+id/tv_logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp"
+                    android:drawablePadding="16dp"
+                    android:drawableStart="@drawable/ic_nav_menu_logout"
+                    android:gravity="center_vertical"
+                    android:paddingStart="@dimen/activity_horizontal_padding"
+                    android:text="@string/nav_menu_logout"
+                    android:textColor="@color/cl_333333"
+                    android:textSize="@dimen/font_size_16" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        <!-- 展示我的所有宝宝 -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_nav_babies"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/nav_header_height"
+            android:background="@color/white"
+            tools:listitem="@layout/item_nav_left_baby_manage"
+            android:visibility="gone"
+            >
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

@@ -16,6 +16,6 @@ public interface IView<T> {
     void onComplete(BaseResponse<T> data, int flag);
 
     // 数据获取失败，View显示
-    void onFailShow(int flag);
+    void onFailShow(int errorCode);
 
 }

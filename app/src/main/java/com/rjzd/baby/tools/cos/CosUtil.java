@@ -101,7 +101,7 @@ private final static int Success=0;
         cosXmlService.putObjectAsync(putObjectRequest, new CosXmlResultListener() {
             @Override
             public void onSuccess(CosXmlRequest request, CosXmlResult result) {
-               Logger.w("TEST","success =" + result.accessUrl);
+                Logger.v("success,"+"accessUrl =" + result.accessUrl);
                 Message msg = new Message();
                 msg.what = Success;
                 msg.obj = result.accessUrl;
@@ -111,13 +111,13 @@ private final static int Success=0;
             @Override
             public void onFail(CosXmlRequest cosXmlRequest, CosXmlClientException clientException, CosXmlServiceException serviceException)  {
                 String errorMsg = clientException != null ? clientException.toString() : serviceException.toString();
-                Logger.w("TEST",errorMsg);
+                Logger.e("TEST",errorMsg);
                 if(isAgain){
                     upload(cosPath,srcPath,false);
                 }
                 Message errmsg = new Message();
                 errmsg.what =Fail;
-                errmsg.obj =clientException;
+                errmsg.obj =clientException.getCause().toString();
                 mMainHandler.sendMessage(errmsg);
             }
         });

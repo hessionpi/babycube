@@ -51,15 +51,13 @@ public class UserAPI {
      * 用户登录
      * @param smsCode                       短信验证码
      * @param mobile                        手机号
-     * @param password                      登录密码
      */
-    public Observable<BaseResponse<ResLogin>> login(String smsCode, String mobile, String password) {
+    public Observable<BaseResponse<ResLogin>> login(String smsCode, String mobile) {
         ReqLogin req = new ReqLogin();
         req.setHeader(APIManager.getInstance().putHeaderByReq(null));
         req.setAction(BabyConstants.ACTION_LOGIN);
         req.setSmsCode(smsCode);
         req.setMobile(mobile);
-        req.setPassword(password);
 
         Gson gson = new Gson();
         String content = gson.toJson(req);

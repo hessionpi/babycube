@@ -4,18 +4,12 @@ import com.google.gson.Gson;
 import com.rjzd.baby.BabyConstants;
 import com.rjzd.baby.entity.BaseResponse;
 import com.zd.baby.api.model.ReqAllDiscuss;
-import com.zd.baby.api.model.ReqAllOfVideos;
 import com.zd.baby.api.model.ReqPublishDiscuss;
 import com.zd.baby.api.model.ReqSimilarVideos;
-import com.zd.baby.api.model.ReqVideoClassify;
 import com.zd.baby.api.model.ReqVideoDetails;
-import com.zd.baby.api.model.ResAllOfVideos;
-import com.zd.baby.api.model.ResVideoClassify;
 import com.zd.baby.api.model.ResAllDiscuss;
 import com.zd.baby.api.model.ResSimilarVideos;
 import com.zd.baby.api.model.ResVideoDetails;
-import com.zd.baby.api.model.VideoFilter;
-
 import okhttp3.RequestBody;
 import rx.Observable;
 
@@ -32,41 +26,6 @@ public class VideoAPI {
         service = APIManager.getInstance().retrofit.create(APIService.class);
     }
 
-    /**
-     * 获取视频分类
-     * @param status                      宝宝状态
-     */
-    public Observable<BaseResponse<ResVideoClassify>> getVideoClassify(int status) {
-        ReqVideoClassify req = new ReqVideoClassify();
-        req.setHeader(APIManager.getInstance().putHeaderByReq(null));
-        req.setAction(BabyConstants.ACTION_VIDEOCLASSIFY);
-        req.setBabyStatus(status);
-
-        Gson gson = new Gson();
-        String content = gson.toJson(req);
-        RequestBody requestBody = RequestBody.create(APIManager.CONTENT_TYPE, content);
-        return service.getVideoClassify(requestBody);
-    }
-
-    /**
-     * 根据条件筛选视频
-     * @param filter                    筛选条件
-     * @param pageNo                    当前页码
-     * @param pageSize                  分页尺寸
-     */
-    public Observable<BaseResponse<ResAllOfVideos>> getAllOfVideos(VideoFilter filter, int pageNo, int pageSize) {
-        ReqAllOfVideos req = new ReqAllOfVideos();
-        req.setHeader(APIManager.getInstance().putHeaderByReq(null));
-        req.setAction(BabyConstants.ACTION_ALLOFVIDEOS);
-        req.setFilter(filter);
-        req.setPageNo(pageNo);
-        req.setPageSize(pageSize);
-
-        Gson gson = new Gson();
-        String content = gson.toJson(req);
-        RequestBody requestBody = RequestBody.create(APIManager.CONTENT_TYPE, content);
-        return service.getAllOfVideos(requestBody);
-    }
 
     /**
      * 获取视频详情

@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/ll_add_baby"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cl_primary_background"
+    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.activity.MainActivity">
+    tools:context=".ui.activity.AddBabyActivity">
 
     <com.rjzd.baby.ui.widget.ToolsbarView
         android:id="@+id/layout_title_bar"
@@ -19,97 +18,165 @@
 
     </com.rjzd.baby.ui.widget.ToolsbarView>
 
+    <ImageView
+        android:id="@+id/iv_baby_photo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="45dp"
+        android:src="@drawable/ic_default_camera"
+        />
+
     <TextView
-        android:id="@+id/tv_title_bar"
-        android:layout_width="match_parent"
+        android:id="@+id/tv_add_photo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:text="选择当前状态"
-        android:textColor="@color/cl_primary"
-        android:textSize="@dimen/font_size_24"
-        android:visibility="gone"/>
+        android:layout_marginTop="8dp"
+        android:layout_gravity="center"
+        android:textSize="@dimen/font_size_14"
+        android:textColor="@color/cl_707070"
+        android:text="@string/add_baby_photo"
+        />
 
-    <RadioGroup
-        android:id="@+id/rg_baby_status"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:gravity="center"
-        android:orientation="horizontal">
+        android:layout_height="57dp"
+        android:paddingStart="17dp"
+        android:paddingEnd="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
 
-        <RadioButton
-            android:id="@+id/rb_baby_preparing"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:button="@null"
-            android:drawablePadding="15dp"
-            android:drawableTop="@drawable/selector_rb_baby_preparing"
-            android:gravity="center"
-            android:text="@string/baby_preparing"
-            android:textColor="@color/selector_textcolor_baby_add"
-            android:textSize="@dimen/font_size_14" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baby_add_name"
+            />
 
-        <RadioButton
-            android:id="@+id/rb_baby_pregnancy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:button="@null"
-            android:checked="true"
-            android:drawablePadding="15dp"
-            android:drawableTop="@drawable/selector_rb_pregnancy"
-            android:gravity="center"
-            android:text="@string/baby_in_mom"
-            android:textColor="@color/selector_textcolor_baby_add"
-            android:textSize="@dimen/font_size_14" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            >
 
-        <RadioButton
-            android:id="@+id/rb_baby_born"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.0"
-            android:button="@null"
-            android:drawablePadding="15dp"
-            android:drawableTop="@drawable/selector_rb_baby_born"
-            android:gravity="center"
-            android:text="@string/baby_born"
-            android:textColor="@color/selector_textcolor_baby_add"
-            android:textSize="@dimen/font_size_14" />
-    </RadioGroup>
+            <EditText
+                android:id="@+id/et_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxLength="12"
+                android:hint="@string/hint_nickname"
+                android:textSize="@dimen/font_size_15"
+                android:textColor="@color/cl_333333"
+                android:textColorHint="@color/cl_c7c7cd"
+                android:background="@null"
+                />
 
-    <!-- 备孕布局-->
-    <ViewStub
-        android:id="@+id/vs_preparing"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cl_cccccc"
+                android:layout_gravity="bottom"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:layout="@layout/layout_stub_preparing" />
+        android:layout_height="57dp"
+        android:paddingStart="17dp"
+        android:paddingEnd="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
 
-    <!-- 怀孕中布局-->
-    <include
-        android:id="@+id/layout_pregnancy"
-        layout="@layout/layout_stub_pregnancy" />
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baby_add_birthday"
+            />
 
-    <!-- 已出生布局-->
-    <ViewStub
-        android:id="@+id/vs_born"
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_birthday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_birthday"
+                android:textSize="@dimen/font_size_15"
+                android:textColor="@color/cl_333333"
+                android:textColorHint="@color/cl_c7c7cd"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cl_cccccc"
+                android:layout_gravity="bottom"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="65dp"
-        android:layout="@layout/layout_stub_born" />
+        android:layout_height="57dp"
+        android:paddingStart="17dp"
+        android:paddingEnd="17dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_baby_add_sex"
+            />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
+            >
+
+            <TextView
+                android:id="@+id/tv_sex"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:hint="@string/hint_sex_unknown"
+                android:textSize="@dimen/font_size_15"
+                android:textColor="@color/cl_333333"
+                android:textColorHint="@color/cl_c7c7cd"
+                />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/cl_cccccc"
+                android:layout_gravity="bottom"
+                />
+        </FrameLayout>
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/btn_done"
+        android:id="@+id/btn_save"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
+        android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/shape_done_bg"
-        android:text="@string/done"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:textSize="@dimen/font_size_16"
         android:textColor="@color/white"
-        android:textSize="@dimen/font_size_16" />
+        android:text="@string/save"
+        android:background="@drawable/shape_done_bg"
+        />
+
 </LinearLayout>

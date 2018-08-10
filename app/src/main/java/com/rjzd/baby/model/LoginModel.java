@@ -162,8 +162,9 @@ public class LoginModel implements Serializable {
         return hasBaby;
     }
 
-    public void setHasBaby(boolean hasBaby) {
+    public LoginModel setHasBaby(boolean hasBaby) {
         this.hasBaby = hasBaby;
+        return null;
     }
 
     public SHARE_MEDIA getOauthPlatform() {

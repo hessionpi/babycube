@@ -1,307 +1,372 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:circle_seekbar="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".ui.activity.MainActivity"
     tools:showIn="@layout/app_bar_main">
-    <!-- 所有主界面的内容都在这里-->
-    <!--<FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
 
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_main_top_bg" />
+    <include
+        android:id="@+id/ll_babygrowth_no_network"
+        layout="@layout/layout_no_network"
+        android:visibility="gone" />
+
+    <com.rjzd.baby.ui.widget.ObservableScrollView
+        android:id="@+id/sv_mian"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/cl_f4f4f4"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:descendantFocusability="blocksDescendants"
             android:orientation="vertical">
+            <!--
+                android:focusableInTouchMode="true"
+            android:focusable="true"-->
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recycler"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:overScrollMode="never"
-                android:scrollbars="horizontal" />
-            &lt;!&ndash;备孕&ndash;&gt;
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="经期第三天"
-                    android:textColor="@color/cl_333333"
-                    android:textSize="@dimen/font_size_14" />
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginTop="25dp">
+                    android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/sy_icon_time"
-                        android:drawablePadding="6dp"
-                        android:text="末次月经开始时间"
-                        android:textColor="@color/cl_aaaaaa"
-                        android:textSize="@dimen/font_size_13" />
+                    <ImageView
+                        android:id="@+id/iv_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="182dp"
+                        android:scaleType="centerCrop"
+                        tools:src="@drawable/ic_default_banner_pregancy" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="2018.04.23"
-                        android:textColor="@color/cl_primary"
-                        android:textSize="@dimen/font_size_13" />
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:background="@drawable/shape_homepage_white_bg">
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                        <TextView
+                            android:id="@+id/tv_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/shape_pregnancy_week_bg"
+                            android:drawableLeft="@drawable/ic_pregnancy_back"
+                            android:drawablePadding="10dp"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:text="2"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_25" />
+
+                        <ImageView
+                            android:id="@+id/iv_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="30dp"
+                            android:src="@drawable/ic_baby_left"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/tv_next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="10dp"
+                            android:background="@drawable/shape_pregnancy_week_bg"
+                            android:drawablePadding="10dp"
+                            android:drawableRight="@drawable/ic_pregnancy_next"
+                            android:gravity="center_vertical"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:text="2"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/font_size_25" />
+
+                        <ImageView
+                            android:id="@+id/iv_next"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="30dp"
+                            android:src="@drawable/ic_baby_right"
+                            android:visibility="gone" />
+                    </RelativeLayout>
+
+                    <View
+                        android:id="@+id/line1"
+                        android:layout_width="2dp"
+                        android:layout_height="17dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@color/cl_dfdfcd" />
+
+                    <View
+                        android:id="@+id/line2"
+                        android:layout_width="2dp"
+                        android:layout_height="32dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@color/cl_dfdfcd"
+                        android:visibility="gone" />
+
+                    <!-- <View
+                         android:layout_width="2dp"
+                         android:layout_height="55dp"
+                         android:layout_marginStart="30dp"
+                         android:background="@color/cl_dfdfcd" />-->
+
+                    <LinearLayout
+                        android:id="@+id/ll_baby_change"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:drawableLeft="@drawable/sy_icon_huaiyunle"
-                        android:drawablePadding="6dp"
-                        android:text="怀孕了？"
-                        android:textSize="@dimen/font_size_13" />
+                        android:background="@drawable/shape_homepage_white_bg"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:id="@+id/iv_shapeImgThumb"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/tv_shapeDescription"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="您的宝宝目前的体型大小相当于金桔"
+                            android:textColor="@color/cl_333333"
+                            android:textSize="@dimen/font_size_15"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
 
                 </LinearLayout>
-            </LinearLayout>
-            &lt;!&ndash;怀孕&ndash;&gt;
+
+                <RelativeLayout
+                    android:layout_width="161dp"
+                    android:layout_height="161dp"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="108dp">
+
+                    <com.rjzd.baby.ui.widget.CircleView
+                        android:id="@+id/seekbar"
+                        android:layout_width="161dp"
+                        android:layout_height="161dp"
+                        android:thumb="@drawable/sy_icon_zhizhen"
+                        circle_seekbar:progress_background="@color/cl_e5e6e1"
+                        circle_seekbar:progress_color="@color/cl_f3aa15"
+                        circle_seekbar:progress_max="10000"
+                        circle_seekbar:progress_width="14dp"
+                        circle_seekbar:scroll="false" />
+
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/ll_first"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="25dp">
+
+                            <TextView
+                                android:id="@+id/first_one"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/cl_656565"
+                                android:textSize="@dimen/font_size_12"
+                                tools:text="宝宝" />
+
+                            <TextView
+                                android:id="@+id/first_two"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:textColor="@color/cl_656565"
+                                android:textSize="@dimen/font_size_60"
+                                tools:text="10" />
+
+                            <TextView
+                                android:id="@+id/first_three"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="6dp"
+                                android:textColor="@color/cl_656565"
+                                android:textSize="@dimen/font_size_12"
+                                tools:text="个月" />
+                        </LinearLayout>
+
+
+                        <View
+                            android:id="@+id/line"
+                            android:layout_width="100dp"
+                            android:layout_height="1dp"
+                            android:layout_marginBottom="7dp"
+                            android:background="@color/cl_line" />
+
+                        <TextView
+                            android:id="@+id/second"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/cl_656565"
+                            android:textSize="@dimen/font_size_12"
+                            tools:text="1周" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+
+            </FrameLayout>
+
+            <include
+                android:id="@+id/ll_babyrecommend_no_network"
+                layout="@layout/layout_no_network"
+                android:visibility="gone" />
+
             <LinearLayout
+                android:id="@+id/ll_recommend"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/tv_today"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/ic_today" />
-
-                    <TextView
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/rv_recommend"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="怀孕中"
-                        android:textColor="@color/cl_333333"
-                        android:textSize="@dimen/font_size_14" />
+                        android:layout_height="wrap_content">
+
+                    </android.support.v7.widget.RecyclerView>
                 </RelativeLayout>
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_pregnancy"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="10dp"
-                    android:overScrollMode="never"
-                    android:scrollbars="horizontal">
-
-                </android.support.v7.widget.RecyclerView>
+                <View
+                    android:id="@+id/view_bottom"
+                    android:layout_width="2dp"
+                    android:layout_height="17dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@color/cl_dfdfcd"
+                    android:visibility="gone" />
 
                 <RelativeLayout
-                    android:id="@+id/rl_week"
-                    android:layout_width="345dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal">
+                    android:id="@+id/rv_ll_bottom_bt"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:background="@drawable/shape_homepage_white_bg"
+                    android:visibility="gone">
 
-                    <ProgressBar
-                        android:id="@+id/pb_week"
-                        style="@style/mProgress_horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="3dp"
-                        android:layout_centerInParent="true"
-                        android:background="@color/cl_d5eef2"
-                        android:max="40"
-                        android:progress="10"
-                        android:visibility="visible" />
-
-                    <ImageView
-                        android:id="@+id/iv_week"
+                    <TextView
+                        android:id="@+id/tv_bottom_back"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/sy_icon_huaiyun" />
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="10dp"
+                        android:background="@drawable/shape_pregnancy_week_bg"
+                        android:drawableLeft="@drawable/ic_pregnancy_back"
+                        android:drawablePadding="10dp"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_25"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/iv_bottom_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="30dp"
+                        android:src="@drawable/ic_baby_left"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tv_bottom_next"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="10dp"
+                        android:background="@drawable/shape_pregnancy_week_bg"
+                        android:drawablePadding="10dp"
+                        android:drawableRight="@drawable/ic_pregnancy_next"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:text="2"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/font_size_25"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/iv_bottom_next"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="30dp"
+                        android:src="@drawable/ic_baby_right"
+                        android:visibility="gone" />
                 </RelativeLayout>
-                &lt;!&ndash; <SeekBar
-                     android:id="@+id/sk_week"
-                     style="@style/mProgress_horizontal"
-                     android:layout_width="345dp"
-                     android:layout_height="wrap_content"
-                     android:background="@color/cl_d5eef2"
-                     android:layout_marginTop="20dp"
-                     android:layout_gravity="center_horizontal"
-                     android:max="100"
-                     android:progress="40"
-                     android:secondaryProgress="0"
-                     android:visibility="visible"
-                 android:thumb="@drawable/sy_icon_huaiyun"
-
-                     />&ndash;&gt;
             </LinearLayout>
-            &lt;!&ndash;宝宝&ndash;&gt;
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <TextView
-
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_today" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="10dp"
-                    android:textColor="@color/cl_333333"
-                    android:textSize="@dimen/font_size_14"
-                    tools:text="宝宝" />
-
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_baby"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:overScrollMode="never"
-                    android:scrollbars="horizontal">
-
-                </android.support.v7.widget.RecyclerView>
-            </LinearLayout>
-
         </LinearLayout>
-    </FrameLayout>
+    </com.rjzd.baby.ui.widget.ObservableScrollView>
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_tools"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp">
-
-    </android.support.v7.widget.RecyclerView>
-
-    &lt;!&ndash;怀孕&ndash;&gt;
     <LinearLayout
+        android:id="@+id/ll_baby_birth"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="56dp"
+        android:background="@color/cl_295b62"
+        android:gravity="center_vertical"
+        android:visibility="gone">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:drawableLeft="@drawable/shape_circle"
-            android:drawablePadding="8dp"
-            android:paddingBottom="7dp"
-            android:paddingTop="20dp"
-            android:text="孕10周第二天"
-            android:textColor="@color/cl_666666"
-            android:textSize="@dimen/font_size_14" />
+            android:layout_marginLeft="15dp"
+            android:text="确认宝宝出生日期？"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_16" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:text="2018年5月20日 星期五"
-            android:textColor="@color/cl_888888"
-            android:textSize="@dimen/font_size_11" />
+            android:id="@+id/tv_baby_birth"
+            android:layout_width="120dp"
+            android:layout_height="48dp"
+            android:layout_marginLeft="15dp"
+            android:background="@drawable/shape_baby_white_bg"
+            android:gravity="center"
+            android:text="是"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size_16" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/shape_white_bg"
-            android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/tishi_icon_baby" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="您的宝宝目前的体型大小相当于金桔"
-                android:textColor="@color/cl_333333"
-                android:textSize="@dimen/font_size_15" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/shape_white_bg"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="7dp"
-                android:text="你怀孕10周了"
-                android:textColor="@color/cl_333333"
-                android:textSize="@dimen/font_size_15" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="每日博客"
-                android:textColor="@color/cl_999999"
-                android:textSize="@dimen/font_size_12" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="孕10周以后，扩扩扩扩扩扩扩扩扩扩坎坎坷坷扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩坎坎坷坷扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩扩坎坎坷坷扩扩扩扩扩扩扩"
-                android:textColor="@color/cl_666666"
-                android:textSize="@dimen/font_size_14" />
-
-
-        </LinearLayout>
     </LinearLayout>
-    &lt;!&ndash;备孕和宝宝&ndash;&gt;
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2018年5月20日 星期五"
-        android:visibility="gone" />
--->
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_recommend_video"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:overScrollMode="never"
-        >
-
-    </android.support.v7.widget.RecyclerView>
-
-
-</LinearLayout>
-
+</RelativeLayout>
